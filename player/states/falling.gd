@@ -31,6 +31,6 @@ func _on_exit(_args) -> void:
 
 
 func _on_timeout(_name) -> void:
-	if _name == "TimerFalling":
+	if _name == "TimerFalling" and is_active("None"):
 		target.play_sfx("awwawawa")
 		long_fall = true

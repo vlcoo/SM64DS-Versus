@@ -5,8 +5,8 @@ extends CharacterBody3D
 var GRAVITY: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export_group("Movement physics")
 ## Horizontal speed.
-@export var SPEED: float
-## Velocity of jump impulse.
+@export var RUN_SPEED: float
+## Upwards velocity of a jump.
 @export var JUMP_STRENGTH: float
 ## Velocity multiplier of the double jump.
 @export var JUMP2_MULTIPLIER: float
@@ -15,7 +15,7 @@ var GRAVITY: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 ## Minimum distance to jump before it can be cut short by releasing the jump button.
 @export var JUMP_INTERRUPT_THRESHOLD: float
 ## Downwards velocity of a groundpound.
-@export var GROUNDPOUND_FORCE: float
+@export var GROUNDPOUND_STRENGTH: float
 @export_group("Timers")
 ## Time in seconds the player has to perform a double jump after touching the floor.
 @export var JUMP2_TIME: float
@@ -41,6 +41,8 @@ static var SFXs: Dictionary = {
 @onready var sfx: AudioStreamPlayer3D = $SFX
 @onready var sfx_steps: AudioStreamPlayer3D = $SFXSteps
 @onready var particles: GPUParticles3D = $GPUParticles3D
+@onready var mat_head: ShaderMaterial = $Model/Head.mesh.surface_get_material(0)
+@onready var mat_body: ShaderMaterial = $Model/Head.mesh.surface_get_material(1)
 
 @onready var cam: Camera3D = $SpringArmPivot/SpringArm3D/Camera3D
 @onready var cam_pivot: Node3D = $SpringArmPivot
@@ -66,6 +68,10 @@ func _ready() -> void:
 	$SpringArmPivot/SpringArm3D/Camera3D.current = camera_follow
 	$Nametag.visible = camera_follow
 	xsm.disabled = not camera_follow
+	
+	var h := randf()
+	mat_body.set_shader_parameter("new_color", Color.from_hsv(h, 1.0, 0.7))
+	mat_head.set_shader_parameter("new_color", Color.from_hsv(h, 1.0, 0.7))
 
 
 func start_picture_anim() -> void:
