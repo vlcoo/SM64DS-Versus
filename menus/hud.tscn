@@ -1,0 +1,177 @@
+[gd_scene load_steps=12 format=3 uid="uid://bsosdwgi58cu8"]
+
+[ext_resource type="Script" path="res://menus/hud.gd" id="1_o1ac0"]
+[ext_resource type="FontFile" uid="uid://cyv5rrm616cq8" path="res://menus/fonts/numbers.png" id="1_voyar"]
+[ext_resource type="Texture2D" uid="uid://dhkjf2jrojwrh" path="res://menus/graphics/hint_time.png" id="2_54xc7"]
+[ext_resource type="FontFile" uid="uid://dkraie6pjj6a" path="res://menus/fonts/sm64ds_title.ttf" id="3_anlb8"]
+[ext_resource type="Texture2D" uid="uid://dv0l48xnlx1k4" path="res://menus/graphics/hint_arrow.png" id="4_51l2i"]
+[ext_resource type="Texture2D" uid="uid://cyfr1ff651xpj" path="res://menus/graphics/atlas_hint_camzoom.png" id="5_d8jrj"]
+[ext_resource type="Script" path="res://debug/xsm_display.gd" id="7_hgejg"]
+
+[sub_resource type="FontVariation" id="FontVariation_32ign"]
+base_font = ExtResource("3_anlb8")
+spacing_glyph = 3
+
+[sub_resource type="Gradient" id="Gradient_tnuxl"]
+offsets = PackedFloat32Array(0, 0.575875, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.980469, 0.824219, 0.21875, 1, 0.980469, 0.472656, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bru0a"]
+gradient = SubResource("Gradient_tnuxl")
+width = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3epho"]
+atlas = ExtResource("5_d8jrj")
+region = Rect2(0, 0, 16, 32)
+
+[node name="GameHUD" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -600.0
+offset_bottom = -350.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_o1ac0")
+metadata/_edit_vertical_guides_ = [600.0]
+metadata/_edit_horizontal_guides_ = [350.0]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 125.0
+offset_right = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(350, 350)
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="TextureRect" parent="."]
+light_mask = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = 2.0
+offset_right = 16.0
+offset_bottom = 10.0
+pivot_offset = Vector2(16, 4)
+texture = ExtResource("2_54xc7")
+
+[node name="LabelTime" type="Label" parent="Timer"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 9.0
+offset_right = 32.0
+offset_bottom = 27.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource("FontVariation_32ign")
+text = "--"
+horizontal_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Timer"]
+position = Vector2(16.125, 16.5625)
+rotation = 1.5708
+scale = Vector2(1.51218, 31.8107)
+blend_mode = 2
+texture = SubResource("GradientTexture1D_bru0a")
+
+[node name="LabelStars" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 175.0
+offset_top = 2.0
+offset_right = 300.0
+offset_bottom = 21.0
+theme_override_fonts/font = ExtResource("1_voyar")
+text = "st><0"
+
+[node name="LabelCoins" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 175.0
+offset_top = 21.0
+offset_right = 300.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("1_voyar")
+text = "co><0"
+
+[node name="TextureCamL" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.5
+offset_top = -8.0
+offset_right = -175.5
+offset_bottom = 8.0
+pivot_offset = Vector2(16, 8)
+texture = ExtResource("4_51l2i")
+flip_h = true
+
+[node name="TextureCamZoom" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 175.0
+offset_top = -34.0
+offset_right = 191.0
+offset_bottom = -2.0
+texture = SubResource("AtlasTexture_3epho")
+
+[node name="TextureCamR" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 175.0
+offset_top = -8.0
+offset_right = 191.0
+offset_bottom = 8.0
+pivot_offset = Vector2(0, 8)
+texture = ExtResource("4_51l2i")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Debug" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 350.0
+script = ExtResource("7_hgejg")
+
+[node name="Label" type="Label" parent="Debug"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "- player state chart -"
+
+[node name="Label2" type="Label" parent="Debug"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 8
+text = "content"

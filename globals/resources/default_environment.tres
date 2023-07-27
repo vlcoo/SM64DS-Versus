@@ -1,0 +1,24 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://el55gy15py1t"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ovi56"]
+load_path = "res://.godot/imported/skybox_generic.png-2c64dac7685966ccf673c8c6ada51476.bptc.ctex"
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qg5am"]
+panorama = SubResource("CompressedTexture2D_ovi56")
+filter = false
+
+[sub_resource type="Sky" id="Sky_c7hmj"]
+sky_material = SubResource("PanoramaSkyMaterial_qg5am")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_c7hmj")
+tonemap_mode = 2
+ssr_enabled = true
+ssil_enabled = true
+glow_enabled = true
+fog_light_energy = 0.35
+fog_density = 0.0
+fog_sky_affect = 0.0
+fog_height_density = 0.3721
+volumetric_fog_density = 0.01

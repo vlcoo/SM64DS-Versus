@@ -1,0 +1,12 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://df317l7ifj10v"]
+
+[ext_resource type="Texture2D" uid="uid://cu6hvyhl030h0" path="res://menus/graphics/btn_golden.png" id="1_ddx47"]
+
+[resource]
+content_margin_left = 20.0
+content_margin_right = 20.0
+texture = ExtResource("1_ddx47")
+texture_margin_left = 12.0
+texture_margin_top = 11.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0

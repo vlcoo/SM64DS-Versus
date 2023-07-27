@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://sfcgkxi4gk53"
+path="res://.godot/imported/isle.obj-1fff202350156af8f37075c5d7fb2b04.mesh"
+
+[deps]
+
+files=["res://.godot/imported/isle.obj-1fff202350156af8f37075c5d7fb2b04.mesh"]
+
+source_file="res://maps/assets/BeachIsle/isle.obj"
+dest_files=["res://.godot/imported/isle.obj-1fff202350156af8f37075c5d7fb2b04.mesh", "res://.godot/imported/isle.obj-1fff202350156af8f37075c5d7fb2b04.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
