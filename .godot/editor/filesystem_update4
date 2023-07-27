@@ -1,9 +1,0 @@
-res://globals/resources/default_environment.tres
-res://player/player.tscn
-res://player/states/charging_groundpound.gd
-res://player/states/common_vertical.gd
-res://player/player.gd
-res://player/states/groundpounding.gd
-res://maps/castle_grounds.tscn
-res://menus/hud.tscn
-res://player/assets/anims_nsmb.res
