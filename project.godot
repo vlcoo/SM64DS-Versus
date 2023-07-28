@@ -25,6 +25,7 @@ buses/default_bus_layout="res://globals/resources/default_bus.tres"
 [autoload]
 
 Transitionizer="*res://globals/transitionizer.tscn"
+Utils="*res://globals/utils.gd"
 
 [display]
 

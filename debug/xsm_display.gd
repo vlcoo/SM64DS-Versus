@@ -9,4 +9,6 @@ func _process(_delta: float) -> void:
 		return
 	
 	$Label2.text = str(player.xsm.active_states.keys()) \
-		.replace(", ", "\n").replace("[", "").replace("]", "").replace("\"", "")
+		.replace(", ", "\n").replace("[", "").replace("]", "").replace("\"", "") + \
+		"\nXvel: " + str(player.velocity.x) + \
+		"\nYvel: " + str(player.velocity.y)

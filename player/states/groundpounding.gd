@@ -8,7 +8,12 @@ func _on_enter(_args) -> void:
 
 func _on_update(_delta) -> void:
 	if target.is_on_floor():
-		change_state("Grounded")
+		change_state("Grounded", [], ["no_land_sfx"])
+
+
+func _on_exit(_args) -> void:
+	target.play_sfx("impact_groundpound", true)
+	target.play_sfx("hou")
 
 
 func _on_timeout(_name) -> void:

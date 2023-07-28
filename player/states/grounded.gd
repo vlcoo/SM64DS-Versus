@@ -9,10 +9,12 @@ func _on_enter(_args) -> void:
 	if not target.is_node_ready(): return
 	target.animation["parameters/conditions/landed"] = true
 	target.particles.emitting = true
-	target.play_sfx("step_land", true)
 
 
 func _after_enter(_args) -> void:
+	if not _args and target.is_node_ready() or (_args and not _args.has("no_land_sfx")): 
+		target.play_sfx("step_land", true)
+	
 	if _args and _args.has("from_jump"): 
 		jump2_timer = add_timer("2nd_jump", target.JUMP2_TIME)
 	elif _args and _args.has("from_jump2"):

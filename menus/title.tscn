@@ -366,9 +366,9 @@ anchors_preset = -1
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 64.0
-offset_top = 206.0
+offset_top = -144.0
 offset_right = 598.0
-offset_bottom = 493.999
+offset_bottom = 143.999
 grow_vertical = 2
 pivot_offset = Vector2(267, 144)
 texture = ExtResource("2_t5mr7")
@@ -528,15 +528,15 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1200.0
-offset_right = 1500.0
-offset_bottom = 350.0
+offset_right = 300.0
+offset_bottom = -350.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(2, 2)
 alignment = 1
 
 [node name="Label" type="Label" parent="ContainerSettings"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -550,6 +550,7 @@ text = "Setting 1"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ContainerSettings"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
@@ -590,6 +591,7 @@ button_group = SubResource("ButtonGroup_dmuds")
 text = "ON"
 
 [node name="HSeparator" type="HSeparator" parent="ContainerSettings"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_pes74")
@@ -604,8 +606,7 @@ theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 4
 theme_override_fonts/font = SubResource("FontVariation_q6w8o")
 theme_override_font_sizes/font_size = 8
-text = "Setting 2
-"
+text = "Graphical Effects"
 horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ContainerSettings"]
@@ -616,6 +617,8 @@ alignment = 1
 [node name="Button2" type="Button" parent="ContainerSettings/HBoxContainer2"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+tooltip_text = "Basic lighting and
+half 3D resolution."
 focus_mode = 0
 theme_override_colors/font_color = Color(0.254902, 0.0941176, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.537255, 0.254902, 0, 1)
@@ -650,6 +653,8 @@ text = "MEDIUM"
 [node name="Button3" type="Button" parent="ContainerSettings/HBoxContainer2"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+tooltip_text = "Global illumination
+and post-processing."
 focus_mode = 0
 theme_override_colors/font_color = Color(0.254902, 0.0941176, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.537255, 0.254902, 0, 1)

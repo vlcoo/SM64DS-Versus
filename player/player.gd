@@ -16,6 +16,10 @@ var GRAVITY: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var JUMP_INTERRUPT_THRESHOLD: float
 ## Downwards velocity of a groundpound.
 @export var GROUNDPOUND_STRENGTH: float
+## Upwards velocity while fluttering.
+@export var FLUTTER_STRENGTH: float
+## Minimum falling velocity the player must have to be able to start a flutter.
+@export var FLUTTER_THRESHOLD: float
 @export_group("Timers")
 ## Time in seconds the player has to perform a double jump after touching the floor.
 @export var JUMP2_TIME: float
@@ -23,6 +27,8 @@ var GRAVITY: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var LONG_FALL_TIME: float
 ## Time in seconds the player will wait in mid-air before dropping on a groundpound.
 @export var GROUNDPOUND_IMPACT_TIME: float
+## Time in seconds a flutter can last for at most.
+@export var FLUTTER_TIME: float
 @export_group("Camera settings")
 ## Speed of the camera rotation with the shoulder buttons.
 @export var CAM_ROTATION_SPEED: float = 1.0
@@ -32,6 +38,8 @@ var GRAVITY: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 static var SFXs: Dictionary = {
 	"step_jump": preload("res://audio/sfx/environment/step_ground_jump.ogg"),
 	"step_land": preload("res://audio/sfx/environment/step_ground_land.ogg"),
+	"impact_groundpound": preload("res://audio/sfx/environment/impact_groundpound.ogg"),
+	"roll": preload("res://audio/sfx/environment/roll.ogg"),
 	"star_touched": preload("res://audio/sfx/jingles/star_touched.ogg")
 }
 

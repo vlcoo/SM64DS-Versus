@@ -8,6 +8,7 @@ func _on_enter(_args) -> void:
 	target.velocity = Vector3.ZERO
 	target.x_locked = true
 	target.y_locked = true
+	target.play_sfx("roll", true)
 
 
 func _on_update(_delta: float) -> void:

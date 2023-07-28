@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://cmfi0lb5ypr17"]
+[gd_scene load_steps=108 format=3 uid="uid://cmfi0lb5ypr17"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ef5wq"]
 [ext_resource type="Texture2D" uid="uid://bou7k8lqk7ybp" path="res://player/assets/YoshiGLB/yoshi_all_16p.png" id="2_hvh7i"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://player/states/collecting_star.gd" id="17_6ukpi"]
 [ext_resource type="Script" path="res://player/states/awaiting_collecting_star.gd" id="17_irv65"]
 [ext_resource type="Script" path="res://player/states/common_horizontal.gd" id="17_m88m0"]
+[ext_resource type="Script" path="res://player/states/fluttering.gd" id="17_s5uuv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfsc8"]
 resource_name = "Material_065_713E77D_c_bmp"
@@ -541,6 +542,7 @@ advance_mode = 2
 advance_condition = &"fluttered"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vutw2"]
+xfade_time = 0.1
 advance_mode = 2
 advance_condition = &"fell"
 
@@ -702,7 +704,7 @@ states/Smoosh/position = Vector2(363, 382)
 "states/Star celeb/position" = Vector2(118, 270)
 states/Start/position = Vector2(313, 187)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_01smk"), "Idle", "Moving blend", SubResource("AnimationNodeStateMachineTransition_4cwx5"), "Moving blend", "Idle", SubResource("AnimationNodeStateMachineTransition_jkd4x"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_bf73j"), "Moving blend", "Jump", SubResource("AnimationNodeStateMachineTransition_ntesw"), "Jump", "Jump end", SubResource("AnimationNodeStateMachineTransition_0yckt"), "Jump end", "Idle", SubResource("AnimationNodeStateMachineTransition_5gpvm"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_c8fxp"), "Moving blend", "Fall", SubResource("AnimationNodeStateMachineTransition_jh1d1"), "Fall", "Jump end", SubResource("AnimationNodeStateMachineTransition_nyhwp"), "Jump", "Moving blend", SubResource("AnimationNodeStateMachineTransition_sjm42"), "Fall", "Moving blend", SubResource("AnimationNodeStateMachineTransition_2btcu"), "Jump", "Flutter", SubResource("AnimationNodeStateMachineTransition_4noyt"), "Flutter", "Fall", SubResource("AnimationNodeStateMachineTransition_vutw2"), "Flutter", "Moving blend", SubResource("AnimationNodeStateMachineTransition_qxvi7"), "Flutter", "Jump end", SubResource("AnimationNodeStateMachineTransition_vvipu"), "Moving blend", "2nd jump", SubResource("AnimationNodeStateMachineTransition_2e70r"), "Idle", "2nd jump", SubResource("AnimationNodeStateMachineTransition_ixdq4"), "2nd jump", "Moving blend", SubResource("AnimationNodeStateMachineTransition_2mitl"), "2nd jump", "Jump end", SubResource("AnimationNodeStateMachineTransition_36yn4"), "Moving blend", "3rd jump", SubResource("AnimationNodeStateMachineTransition_dp1ra"), "3rd jump", "Fall", SubResource("AnimationNodeStateMachineTransition_18jvx"), "2nd jump", "Flutter", SubResource("AnimationNodeStateMachineTransition_h55mu"), "Landed celeb", "Idle", SubResource("AnimationNodeStateMachineTransition_2ctdc"), "Landed celeb", "Moving blend", SubResource("AnimationNodeStateMachineTransition_ndm71"), "Fall", "Landed celeb", SubResource("AnimationNodeStateMachineTransition_lswjm"), "Star celeb", "Idle", SubResource("AnimationNodeStateMachineTransition_gokrv"), "Jump end", "Star celeb", SubResource("AnimationNodeStateMachineTransition_skkno"), "Fall", "Smoosh", SubResource("AnimationNodeStateMachineTransition_j4u74"), "Smoosh", "Idle", SubResource("AnimationNodeStateMachineTransition_aejow"), "Smoosh", "Moving blend", SubResource("AnimationNodeStateMachineTransition_aasl5"), "Jump", "GP begin", SubResource("AnimationNodeStateMachineTransition_7pkwo"), "2nd jump", "GP begin", SubResource("AnimationNodeStateMachineTransition_av6xf"), "3rd jump", "GP begin", SubResource("AnimationNodeStateMachineTransition_a6ofr"), "Fall", "GP begin", SubResource("AnimationNodeStateMachineTransition_6jx6o"), "GP begin", "GP falling", SubResource("AnimationNodeStateMachineTransition_w4mx5"), "GP falling", "GP end", SubResource("AnimationNodeStateMachineTransition_a5mt8"), "GP end", "Idle", SubResource("AnimationNodeStateMachineTransition_k5ig5"), "GP end", "Star celeb", SubResource("AnimationNodeStateMachineTransition_64gv8")]
-graph_offset = Vector2(-78, 169.809)
+graph_offset = Vector2(-78, -28.191)
 
 [sub_resource type="Animation" id="Animation_80m2m"]
 length = 0.001
@@ -912,9 +914,12 @@ JUMP2_MULTIPLIER = 1.1
 JUMP3_MULTIPLIER = 1.4
 JUMP_INTERRUPT_THRESHOLD = 0.6
 GROUNDPOUND_STRENGTH = 3.0
+FLUTTER_STRENGTH = 1.0
+FLUTTER_THRESHOLD = 0.2
 JUMP2_TIME = 0.2
 LONG_FALL_TIME = 0.8
 GROUNDPOUND_IMPACT_TIME = 0.1
+FLUTTER_TIME = 1.0
 CAM_ROTATION_SPEED = 120.0
 
 [node name="StarContainer" type="Node3D" parent="."]
@@ -939,106 +944,106 @@ bones/1/name = "skl_root"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 6.14429, -0.473877)
 bones/1/enabled = true
-bones/1/position = Vector3(0.544045, 5.30856, -0.255437)
-bones/1/rotation = Quaternion(0.528925, 0.558029, 0.398959, 0.499673)
+bones/1/position = Vector3(-0.304722, 5.3819, -0.499671)
+bones/1/rotation = Quaternion(0.474369, 0.496195, 0.517067, 0.511279)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "spin"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.972412, 0, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0.972412, 0, 0)
-bones/2/rotation = Quaternion(-0.0601132, 0.0540556, 0.0804894, 0.993472)
+bones/2/rotation = Quaternion(-0.00235526, -0.013514, 0.0773754, 0.996908)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "face_1"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 4.27661, 0, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(4.27661, 0, 0)
-bones/3/rotation = Quaternion(0.241853, -0.238966, 0.713763, 0.612328)
+bones/3/rotation = Quaternion(0.00721884, -0.014923, 0.680232, 0.732809)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "arm_l1"
 bones/4/parent = 2
 bones/4/rest = Transform3D(0, 0, 1, 0, -1, 0, 1, 0, 0, 2.94995, -0.0327148, 2.26245)
 bones/4/enabled = true
 bones/4/position = Vector3(2.94995, 0.475098, 2.26245)
-bones/4/rotation = Quaternion(0.401989, -0.0922826, 0.896832, 0.15994)
+bones/4/rotation = Quaternion(0.400701, -0.206898, 0.880821, 0.144174)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "arm_l2"
 bones/5/parent = 4
 bones/5/rest = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 1.95874, 0, 0)
 bones/5/enabled = true
 bones/5/position = Vector3(1.95874, 0, 0)
-bones/5/rotation = Quaternion(0.962549, -0.184021, -0.194074, -0.044391)
+bones/5/rotation = Quaternion(0.852521, -0.440525, -0.246787, -0.135062)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "wrist_l1"
 bones/6/parent = 5
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 0, 0)
 bones/6/enabled = true
 bones/6/position = Vector3(1.875, 0, 0)
-bones/6/rotation = Quaternion(0.175176, -0.015044, 0.0849091, 0.980754)
+bones/6/rotation = Quaternion(0.172472, -0.00970773, -0.146502, 0.97401)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "arm_r1"
 bones/7/parent = 2
 bones/7/rest = Transform3D(0, 0, -1, 0, -1, 0, -1, 0, 0, 2.94995, -0.0327148, -2.26245)
 bones/7/enabled = true
 bones/7/position = Vector3(2.94995, 0.475098, -2.26245)
-bones/7/rotation = Quaternion(0.410264, -0.137588, -0.885347, -0.17004)
+bones/7/rotation = Quaternion(0.442442, -0.312563, -0.834201, -0.103238)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "arm_r2"
 bones/8/parent = 7
 bones/8/rest = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 1.95874, 0, 0)
 bones/8/enabled = true
 bones/8/position = Vector3(1.95874, 0, 0)
-bones/8/rotation = Quaternion(0.960475, -0.214362, 0.153937, 0.0885499)
+bones/8/rotation = Quaternion(0.972558, -0.0747684, 0.209699, 0.0675743)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "wrist_r1"
 bones/9/parent = 8
 bones/9/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 0, 0)
 bones/9/enabled = true
 bones/9/position = Vector3(1.875, 0, 0)
-bones/9/rotation = Quaternion(-0.256247, 0.0192131, 0.0577824, 0.964691)
+bones/9/rotation = Quaternion(-0.263593, -0.00107779, 0.0301942, 0.964161)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "leg_r1"
 bones/10/parent = 1
 bones/10/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.103271, 0.307129, -1.44385)
 bones/10/enabled = true
 bones/10/position = Vector3(-0.776367, 0.307129, -2.47119)
-bones/10/rotation = Quaternion(0.055521, 0.955426, -0.170083, 0.234841)
+bones/10/rotation = Quaternion(0.286811, 0.95526, -0.00575404, 0.0720076)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "leg_r2"
 bones/11/parent = 10
 bones/11/rest = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 2.87158, 0, 0)
 bones/11/enabled = true
 bones/11/position = Vector3(1.9812, 0, 0)
-bones/11/rotation = Quaternion(0.836462, -0.548024, 0, 0)
+bones/11/rotation = Quaternion(0.802753, -0.596312, 0, 0)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "ankle_r1"
 bones/12/parent = 11
 bones/12/rest = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 2.0083, 0, 0)
 bones/12/enabled = true
 bones/12/position = Vector3(2.0083, 0, 0)
-bones/12/rotation = Quaternion(0.160398, -0.184633, -0.853624, 0.459902)
+bones/12/rotation = Quaternion(0.199453, 0.00286211, -0.879969, 0.431121)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "leg_l1"
 bones/13/parent = 1
 bones/13/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.103271, 0.307129, 1.44385)
 bones/13/enabled = true
 bones/13/position = Vector3(-0.776611, 0.307129, 2.47168)
-bones/13/rotation = Quaternion(0.292899, 0.954153, -0.0258836, -0.0559696)
+bones/13/rotation = Quaternion(0.229726, 0.961935, 0.0382855, -0.142975)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/name = "leg_l2"
 bones/14/parent = 13
 bones/14/rest = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 2.87158, 0, 0)
 bones/14/enabled = true
 bones/14/position = Vector3(1.98242, 0, 0)
-bones/14/rotation = Quaternion(0.762151, -0.6474, 0, 0)
+bones/14/rotation = Quaternion(0.848843, -0.528645, 0, 0)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "ankle_l1"
 bones/15/parent = 14
 bones/15/rest = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 2.0083, 0, 0)
 bones/15/enabled = true
 bones/15/position = Vector3(2.0083, 0, 0)
-bones/15/rotation = Quaternion(-0.150974, -0.0114944, -0.887253, 0.435725)
+bones/15/rotation = Quaternion(-0.238144, 0.0668069, -0.830789, 0.498611)
 bones/15/scale = Vector3(1, 1, 1)
 
 [node name="Body" type="MeshInstance3D" parent="Model"]
@@ -1163,7 +1168,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Fluttering")
 
 [node name="Groundpounding" type="Node" parent="XSM/VerticalMoves"]
 script = ExtResource("16_f8vhj")
@@ -1171,7 +1176,10 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Fluttering")
+
+[node name="Fluttering" type="Node" parent="XSM/VerticalMoves"]
+script = ExtResource("17_s5uuv")
 
 [node name="HorizontalMoves" type="Node" parent="XSM"]
 script = ExtResource("17_m88m0")
