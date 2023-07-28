@@ -21,6 +21,8 @@ var regex_invalid_name: RegEx
 func _ready() -> void:
 	regex_invalid_name = RegEx.new()
 	regex_invalid_name.compile("[^A-Za-z0-9]+")
+	
+	$Control/ContainerPlayerList/Panel/LineEdit.text = Utils.config.get_value("player", "nickname", Utils.get_random_nick())
 
 
 func _on_button_pressed() -> void:
@@ -31,6 +33,10 @@ func _on_button_pressed() -> void:
 	container_map_selector.visible = true
 	container_player_list.visible = false
 	$Control/ContainerPlayerList/Button.button_pressed = false
+	
+	var n: String = $Control/ContainerPlayerList/Panel/LineEdit.text
+	Utils.config.set_value("player", "nickname", n)
+	Utils.player_nickname = n
 
 
 func _on_button_2_pressed() -> void:

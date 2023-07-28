@@ -766,6 +766,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1200.0
+offset_bottom = 700.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -877,7 +879,6 @@ theme_override_styles/hover = ExtResource("14_srcp8")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_xbdot")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_crb0q")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_oklgs")
-disabled = true
 toggle_mode = true
 action_mode = 0
 text = "START"

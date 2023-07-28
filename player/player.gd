@@ -80,6 +80,8 @@ func _ready() -> void:
 	var h := randf()
 	mat_body.set_shader_parameter("new_color", Color.from_hsv(h, 1.0, 0.7))
 	mat_head.set_shader_parameter("new_color", Color.from_hsv(h, 1.0, 0.7))
+	
+	if camera_follow: $Nametag/Label3D.text = Utils.player_nickname
 
 
 func start_picture_anim() -> void:
