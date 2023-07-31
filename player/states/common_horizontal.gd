@@ -9,15 +9,16 @@ func _on_update(_delta: float) -> void:
 	if direction and not target.x_locked:
 		var is_jumping: bool = ["2Jumping", "3Jumping"] \
 			.any(func(s): return active_states.has(s))
-		if is_jumping: direction = direction * Vector3(0.7, 1, 0.7)
+		if is_jumping: direction *= Vector3(0.7, 1, 0.7)
 		target.velocity.x = direction.x * target.RUN_SPEED
 		target.velocity.z = direction.z * target.RUN_SPEED
-		if not is_jumping:
+		if is_active("LongJumping"): target.velocity *= Vector3(target.LONGJUMP_X_MULTIPLIER, 1, target.LONGJUMP_X_MULTIPLIER)
+		if not is_jumping and not is_active("LongJumping"):
 			target.model.rotation.y = atan2(target.velocity.x, target.velocity.z)
 		target.animation["parameters/Moving blend/TimeScale/scale"] = target.velocity.length() * 1.2
 	else:
-		target.velocity.x = move_toward(target.velocity.x, 0, target.RUN_SPEED)
-		target.velocity.z = move_toward(target.velocity.z, 0, target.RUN_SPEED)
+		target.velocity.x = move_toward(target.velocity.x, 0, target.RUN_SPEED / target.DECEL_STRENGTH)
+		target.velocity.z = move_toward(target.velocity.z, 0, target.RUN_SPEED / target.DECEL_STRENGTH)
 		target.model.rotation.x = 0
 
 	target.move_and_slide()

@@ -6,14 +6,24 @@ var GRAVITY: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export_group("Movement physics")
 ## Horizontal speed.
 @export var RUN_SPEED: float
+## Horizontal deceleration rate.
+@export var DECEL_STRENGTH: float 
+## Run speed multiplier of a crawl.
+@export_range(0, 1, 0.1) var CRAWL_MULTIPLIER: float
 ## Upwards velocity of a jump.
 @export var JUMP_STRENGTH: float
-## Velocity multiplier of the double jump.
+## Jump strength multiplier of the double jump.
 @export var JUMP2_MULTIPLIER: float
-## Velocity multiplier of the triple jump.
+## Jump strength multiplier of the triple jump.
 @export var JUMP3_MULTIPLIER: float
 ## Minimum distance to jump before it can be cut short by releasing the jump button.
 @export var JUMP_INTERRUPT_THRESHOLD: float
+## Run speed velocity multiplier of a longjump.
+@export var LONGJUMP_X_MULTIPLIER: float
+## Softening of horizontal inputs while longjumping.
+@export var LONGJUMP_X_DAMPING: float
+## Upwards velocity of a longjump.
+@export var LONGJUMP_Y_STRENGTH: float
 ## Downwards velocity of a groundpound.
 @export var GROUNDPOUND_STRENGTH: float
 ## Upwards velocity while fluttering.
