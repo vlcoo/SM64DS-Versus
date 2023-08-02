@@ -7,6 +7,8 @@ var current_player: Player
 
 
 func _ready() -> void:
+	%DirLightMain.shadow_enabled = Utils.config.get_value("settings", "graphics") != 0
+	
 	spawn_player()
 
 

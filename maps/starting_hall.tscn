@@ -38,6 +38,7 @@ texture_repeat = false
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5r6ww"]
 resource_name = "frame_mat.001"
 albedo_texture = ExtResource("3_fpaex")
+metallic_specular = 0.0
 roughness = 0.6
 texture_filter = 0
 
@@ -241,6 +242,7 @@ shader_parameter/texture_albedo = ExtResource("9_bddby")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1r3v"]
 albedo_texture = ExtResource("9_bddby")
+metallic_specular = 0.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_h0tta"]
 material = SubResource("StandardMaterial3D_h1r3v")

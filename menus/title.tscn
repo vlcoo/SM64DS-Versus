@@ -366,9 +366,9 @@ anchors_preset = -1
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 64.0
-offset_top = -144.0
+offset_top = 206.0
 offset_right = 598.0
-offset_bottom = 143.999
+offset_bottom = 493.999
 grow_vertical = 2
 pivot_offset = Vector2(267, 144)
 texture = ExtResource("2_t5mr7")
@@ -528,8 +528,9 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 300.0
-offset_bottom = -350.0
+offset_left = 1200.0
+offset_right = 1500.0
+offset_bottom = 350.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -614,11 +615,11 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Button2" type="Button" parent="ContainerSettings/HBoxContainer2"]
+[node name="Button1" type="Button" parent="ContainerSettings/HBoxContainer2"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-tooltip_text = "Basic lighting and
-half 3D resolution."
+tooltip_text = "Half 3D resolution
+and basic renderer."
 focus_mode = 0
 theme_override_colors/font_color = Color(0.254902, 0.0941176, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.537255, 0.254902, 0, 1)
@@ -633,9 +634,11 @@ action_mode = 0
 button_group = SubResource("ButtonGroup_gngym")
 text = "LOW"
 
-[node name="Button" type="Button" parent="ContainerSettings/HBoxContainer2"]
+[node name="Button2" type="Button" parent="ContainerSettings/HBoxContainer2"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+tooltip_text = "Average looks but
+decent performance."
 focus_mode = 0
 theme_override_colors/font_color = Color(0.254902, 0.0941176, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.537255, 0.254902, 0, 1)
@@ -653,7 +656,7 @@ text = "MEDIUM"
 [node name="Button3" type="Button" parent="ContainerSettings/HBoxContainer2"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-tooltip_text = "Global illumination
+tooltip_text = "Fancy illumination
 and post-processing."
 focus_mode = 0
 theme_override_colors/font_color = Color(0.254902, 0.0941176, 0, 1)
@@ -710,4 +713,7 @@ bus = &"SFX"
 [connection signal="pressed" from="BtnVS" to="." method="_on_btn_vs_pressed"]
 [connection signal="pressed" from="BtnConfig" to="." method="_on_btn_config_pressed"]
 [connection signal="pressed" from="BtnExit" to="." method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="ContainerSettings/HBoxContainer2/Button1" to="." method="_on_settings_graphics_changed" binds= [0]]
+[connection signal="pressed" from="ContainerSettings/HBoxContainer2/Button2" to="." method="_on_settings_graphics_changed" binds= [1]]
+[connection signal="pressed" from="ContainerSettings/HBoxContainer2/Button3" to="." method="_on_settings_graphics_changed" binds= [2]]
 [connection signal="pressed" from="ContainerSettings/BtnSettingsBack" to="." method="_on_btn_settings_back_pressed"]
