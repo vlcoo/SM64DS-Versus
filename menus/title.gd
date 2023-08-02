@@ -52,15 +52,14 @@ func _on_settings_graphics_changed(level: int) -> void:
 	
 	match level:
 		0:
-			ProjectSettings.set_setting("rendering/renderer/rendering_method", "gl_compatibility")
 			ProjectSettings.set_setting("rendering/scaling_3d/scale", 0.5)
 			ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_3d", 0)
 		1:
-			ProjectSettings.set_setting("rendering/renderer/rendering_method", "mobile")
 			ProjectSettings.set_setting("rendering/scaling_3d/scale", 1)
 			ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_3d", 0)
 		2:
-			ProjectSettings.set_setting("rendering/renderer/rendering_method", "forward_plus")
 			ProjectSettings.set_setting("rendering/scaling_3d/scale", 1)
 			ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_3d", 2)
 	ProjectSettings.save()
+	
+	$ContainerSettings/Label2.text += "\nRestart game to save setting."

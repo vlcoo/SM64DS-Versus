@@ -4,6 +4,7 @@ extends Control
 func _ready() -> void:
 	randomize()
 	$VBoxContainer/LabelLogo.text = get_company_name()
+	Utils.set_discord_status(Utils.RPC_STATUS.InMenu)
 
 
 func get_company_name() -> String:

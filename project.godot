@@ -26,6 +26,7 @@ buses/default_bus_layout="res://globals/resources/default_bus.tres"
 
 Transitionizer="*res://globals/transitionizer.tscn"
 Utils="*res://globals/utils.gd"
+DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 
 [display]
 
@@ -34,10 +35,11 @@ window/size/viewport_height=700
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
+window/vsync/vsync_mode=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/xsm/plugin.cfg")
+enabled=PackedStringArray("res://addons/discord-sdk-gd/plugin.cfg", "res://addons/xsm/plugin.cfg")
 
 [filesystem]
 
@@ -142,7 +144,9 @@ textures/canvas_textures/default_texture_filter=0
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
 textures/default_filters/use_nearest_mipmap_filter=true
+scaling_3d/mode=1
 scaling_3d/scale=1
+scaling_3d/fsr_sharpness=0.0
 environment/glow/upscale_mode=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/msaa_3d=2

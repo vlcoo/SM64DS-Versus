@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://player/states/common_horizontal.gd" id="17_m88m0"]
 [ext_resource type="Script" path="res://player/states/fluttering.gd" id="17_s5uuv"]
 [ext_resource type="Script" path="res://player/states/long_jumping.gd" id="18_70jq3"]
+[ext_resource type="Script" path="res://player/states/crouching.gd" id="22_50mka"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfsc8"]
 resource_name = "Material_065_713E77D_c_bmp"
@@ -684,20 +685,10 @@ xfade_time = 0.1
 advance_mode = 2
 advance_condition = &"crouched"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lhdvg"]
-xfade_time = 0.1
-advance_mode = 2
-advance_condition = &"crouched"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cw1lf"]
 xfade_time = 0.1
 advance_mode = 2
 advance_condition = &"idling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_capaf"]
-xfade_time = 0.1
-advance_mode = 2
-advance_condition = &"moving"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_glk8t"]
 advance_mode = 2
@@ -715,13 +706,18 @@ advance_mode = 2
 advance_condition = &"landed"
 advance_expression = "animation[\"parameters/conditions/idling\"]"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qhgv1"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"moving"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lbcbv"]
 "states/2nd jump/node" = SubResource("AnimationNodeAnimation_5cu4j")
 "states/2nd jump/position" = Vector2(664, 62)
 "states/3rd jump/node" = SubResource("AnimationNodeAnimation_vay6c")
 "states/3rd jump/position" = Vector2(1016, 100)
 states/Crouch/node = SubResource("AnimationNodeAnimation_40c0k")
-states/Crouch/position = Vector2(313, -69.809)
+states/Crouch/position = Vector2(313, -75)
 states/End/position = Vector2(1189, 100)
 states/Fall/node = SubResource("AnimationNodeAnimation_7g56d")
 states/Fall/position = Vector2(469, 382)
@@ -750,7 +746,7 @@ states/Smoosh/position = Vector2(363, 382)
 "states/Star celeb/node" = SubResource("AnimationNodeAnimation_hsbl4")
 "states/Star celeb/position" = Vector2(118, 270)
 states/Start/position = Vector2(313, 187)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_01smk"), "Idle", "Moving blend", SubResource("AnimationNodeStateMachineTransition_4cwx5"), "Moving blend", "Idle", SubResource("AnimationNodeStateMachineTransition_jkd4x"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_bf73j"), "Moving blend", "Jump", SubResource("AnimationNodeStateMachineTransition_ntesw"), "Jump", "Jump end", SubResource("AnimationNodeStateMachineTransition_0yckt"), "Jump end", "Idle", SubResource("AnimationNodeStateMachineTransition_5gpvm"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_c8fxp"), "Moving blend", "Fall", SubResource("AnimationNodeStateMachineTransition_jh1d1"), "Fall", "Jump end", SubResource("AnimationNodeStateMachineTransition_nyhwp"), "Jump", "Moving blend", SubResource("AnimationNodeStateMachineTransition_sjm42"), "Fall", "Moving blend", SubResource("AnimationNodeStateMachineTransition_2btcu"), "Jump", "Flutter", SubResource("AnimationNodeStateMachineTransition_4noyt"), "Flutter", "Fall", SubResource("AnimationNodeStateMachineTransition_vutw2"), "Flutter", "Moving blend", SubResource("AnimationNodeStateMachineTransition_qxvi7"), "Flutter", "Jump end", SubResource("AnimationNodeStateMachineTransition_vvipu"), "Moving blend", "2nd jump", SubResource("AnimationNodeStateMachineTransition_2e70r"), "Idle", "2nd jump", SubResource("AnimationNodeStateMachineTransition_ixdq4"), "2nd jump", "Moving blend", SubResource("AnimationNodeStateMachineTransition_2mitl"), "2nd jump", "Jump end", SubResource("AnimationNodeStateMachineTransition_36yn4"), "Moving blend", "3rd jump", SubResource("AnimationNodeStateMachineTransition_dp1ra"), "3rd jump", "Fall", SubResource("AnimationNodeStateMachineTransition_18jvx"), "2nd jump", "Flutter", SubResource("AnimationNodeStateMachineTransition_h55mu"), "Landed celeb", "Idle", SubResource("AnimationNodeStateMachineTransition_2ctdc"), "Landed celeb", "Moving blend", SubResource("AnimationNodeStateMachineTransition_ndm71"), "Fall", "Landed celeb", SubResource("AnimationNodeStateMachineTransition_lswjm"), "Star celeb", "Idle", SubResource("AnimationNodeStateMachineTransition_gokrv"), "Jump end", "Star celeb", SubResource("AnimationNodeStateMachineTransition_skkno"), "Fall", "Smoosh", SubResource("AnimationNodeStateMachineTransition_j4u74"), "Smoosh", "Idle", SubResource("AnimationNodeStateMachineTransition_aejow"), "Smoosh", "Moving blend", SubResource("AnimationNodeStateMachineTransition_aasl5"), "Jump", "GP begin", SubResource("AnimationNodeStateMachineTransition_7pkwo"), "2nd jump", "GP begin", SubResource("AnimationNodeStateMachineTransition_av6xf"), "3rd jump", "GP begin", SubResource("AnimationNodeStateMachineTransition_a6ofr"), "Fall", "GP begin", SubResource("AnimationNodeStateMachineTransition_6jx6o"), "GP begin", "GP falling", SubResource("AnimationNodeStateMachineTransition_w4mx5"), "GP falling", "GP end", SubResource("AnimationNodeStateMachineTransition_a5mt8"), "GP end", "Idle", SubResource("AnimationNodeStateMachineTransition_k5ig5"), "GP end", "Star celeb", SubResource("AnimationNodeStateMachineTransition_64gv8"), "Idle", "Crouch", SubResource("AnimationNodeStateMachineTransition_8hqyy"), "Moving blend", "Crouch", SubResource("AnimationNodeStateMachineTransition_lhdvg"), "Crouch", "Idle", SubResource("AnimationNodeStateMachineTransition_cw1lf"), "Crouch", "Moving blend", SubResource("AnimationNodeStateMachineTransition_capaf"), "Moving blend", "Longjump", SubResource("AnimationNodeStateMachineTransition_glk8t"), "Longjump", "Moving blend", SubResource("AnimationNodeStateMachineTransition_idu5w"), "Longjump", "Jump end", SubResource("AnimationNodeStateMachineTransition_if7fs")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_01smk"), "Idle", "Moving blend", SubResource("AnimationNodeStateMachineTransition_4cwx5"), "Moving blend", "Idle", SubResource("AnimationNodeStateMachineTransition_jkd4x"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_bf73j"), "Moving blend", "Jump", SubResource("AnimationNodeStateMachineTransition_ntesw"), "Jump", "Jump end", SubResource("AnimationNodeStateMachineTransition_0yckt"), "Jump end", "Idle", SubResource("AnimationNodeStateMachineTransition_5gpvm"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_c8fxp"), "Moving blend", "Fall", SubResource("AnimationNodeStateMachineTransition_jh1d1"), "Fall", "Jump end", SubResource("AnimationNodeStateMachineTransition_nyhwp"), "Jump", "Moving blend", SubResource("AnimationNodeStateMachineTransition_sjm42"), "Fall", "Moving blend", SubResource("AnimationNodeStateMachineTransition_2btcu"), "Jump", "Flutter", SubResource("AnimationNodeStateMachineTransition_4noyt"), "Flutter", "Fall", SubResource("AnimationNodeStateMachineTransition_vutw2"), "Flutter", "Moving blend", SubResource("AnimationNodeStateMachineTransition_qxvi7"), "Flutter", "Jump end", SubResource("AnimationNodeStateMachineTransition_vvipu"), "Moving blend", "2nd jump", SubResource("AnimationNodeStateMachineTransition_2e70r"), "Idle", "2nd jump", SubResource("AnimationNodeStateMachineTransition_ixdq4"), "2nd jump", "Moving blend", SubResource("AnimationNodeStateMachineTransition_2mitl"), "2nd jump", "Jump end", SubResource("AnimationNodeStateMachineTransition_36yn4"), "Moving blend", "3rd jump", SubResource("AnimationNodeStateMachineTransition_dp1ra"), "3rd jump", "Fall", SubResource("AnimationNodeStateMachineTransition_18jvx"), "2nd jump", "Flutter", SubResource("AnimationNodeStateMachineTransition_h55mu"), "Landed celeb", "Idle", SubResource("AnimationNodeStateMachineTransition_2ctdc"), "Landed celeb", "Moving blend", SubResource("AnimationNodeStateMachineTransition_ndm71"), "Fall", "Landed celeb", SubResource("AnimationNodeStateMachineTransition_lswjm"), "Star celeb", "Idle", SubResource("AnimationNodeStateMachineTransition_gokrv"), "Jump end", "Star celeb", SubResource("AnimationNodeStateMachineTransition_skkno"), "Fall", "Smoosh", SubResource("AnimationNodeStateMachineTransition_j4u74"), "Smoosh", "Idle", SubResource("AnimationNodeStateMachineTransition_aejow"), "Smoosh", "Moving blend", SubResource("AnimationNodeStateMachineTransition_aasl5"), "Jump", "GP begin", SubResource("AnimationNodeStateMachineTransition_7pkwo"), "2nd jump", "GP begin", SubResource("AnimationNodeStateMachineTransition_av6xf"), "3rd jump", "GP begin", SubResource("AnimationNodeStateMachineTransition_a6ofr"), "Fall", "GP begin", SubResource("AnimationNodeStateMachineTransition_6jx6o"), "GP begin", "GP falling", SubResource("AnimationNodeStateMachineTransition_w4mx5"), "GP falling", "GP end", SubResource("AnimationNodeStateMachineTransition_a5mt8"), "GP end", "Idle", SubResource("AnimationNodeStateMachineTransition_k5ig5"), "GP end", "Star celeb", SubResource("AnimationNodeStateMachineTransition_64gv8"), "Idle", "Crouch", SubResource("AnimationNodeStateMachineTransition_8hqyy"), "Crouch", "Idle", SubResource("AnimationNodeStateMachineTransition_cw1lf"), "Moving blend", "Longjump", SubResource("AnimationNodeStateMachineTransition_glk8t"), "Longjump", "Moving blend", SubResource("AnimationNodeStateMachineTransition_idu5w"), "Longjump", "Jump end", SubResource("AnimationNodeStateMachineTransition_if7fs"), "Crouch", "Moving blend", SubResource("AnimationNodeStateMachineTransition_qhgv1")]
 graph_offset = Vector2(-22.1177, -244.836)
 
 [sub_resource type="Animation" id="Animation_80m2m"]
@@ -956,6 +952,7 @@ floor_max_angle = 1.0472
 platform_on_leave = 1
 script = ExtResource("1_ef5wq")
 RUN_SPEED = 1.0
+SOFT_X_DAMPING = 0.01
 DECEL_STRENGTH = 1.0
 CRAWL_MULTIPLIER = 0.2
 JUMP_STRENGTH = 1.6
@@ -996,106 +993,106 @@ bones/1/name = "skl_root"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 6.14429, -0.473877)
 bones/1/enabled = true
-bones/1/position = Vector3(-0.48739, 5.32727, -0.871996)
-bones/1/rotation = Quaternion(0.495263, 0.453365, 0.570177, 0.473363)
+bones/1/position = Vector3(-0.502085, 5.58622, -0.510863)
+bones/1/rotation = Quaternion(0.441248, 0.531297, 0.494697, 0.52754)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "spin"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.972412, 0, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0.972412, 0, 0)
-bones/2/rotation = Quaternion(0.0240761, -0.0524283, 0.0783397, 0.995256)
+bones/2/rotation = Quaternion(0.0724157, -0.0498848, 0.0808711, 0.992838)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "face_1"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 4.27661, 0, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(4.27661, 0, 0)
-bones/3/rotation = Quaternion(-0.103669, 0.188647, 0.567275, 0.794899)
+bones/3/rotation = Quaternion(-0.308801, 0.270879, 0.634633, 0.654605)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "arm_l1"
 bones/4/parent = 2
 bones/4/rest = Transform3D(0, 0, 1, 0, -1, 0, 1, 0, 0, 2.94995, -0.0327148, 2.26245)
 bones/4/enabled = true
 bones/4/position = Vector3(2.94995, 0.475098, 2.26245)
-bones/4/rotation = Quaternion(0.408616, -0.336091, 0.846478, 0.0595904)
+bones/4/rotation = Quaternion(0.381537, -0.142815, 0.905055, 0.122104)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "arm_l2"
 bones/5/parent = 4
 bones/5/rest = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 1.95874, 0, 0)
 bones/5/enabled = true
 bones/5/position = Vector3(1.95874, 0, 0)
-bones/5/rotation = Quaternion(0.84476, -0.501454, -0.156883, -0.101553)
+bones/5/rotation = Quaternion(0.891824, -0.439886, -0.0911445, -0.0533206)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "wrist_l1"
 bones/6/parent = 5
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 0, 0)
 bones/6/enabled = true
 bones/6/position = Vector3(1.875, 0, 0)
-bones/6/rotation = Quaternion(0.124499, 0.0620645, 0.114062, 0.983686)
+bones/6/rotation = Quaternion(0.157544, -0.0873357, -0.00262414, 0.983639)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "arm_r1"
 bones/7/parent = 2
 bones/7/rest = Transform3D(0, 0, -1, 0, -1, 0, -1, 0, 0, 2.94995, -0.0327148, -2.26245)
 bones/7/enabled = true
 bones/7/position = Vector3(2.94995, 0.475098, -2.26245)
-bones/7/rotation = Quaternion(0.490935, -0.335477, -0.80201, -0.0567342)
+bones/7/rotation = Quaternion(0.430157, -0.0475306, -0.881214, -0.190179)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "arm_r2"
 bones/8/parent = 7
 bones/8/rest = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 1.95874, 0, 0)
 bones/8/enabled = true
 bones/8/position = Vector3(1.95874, 0, 0)
-bones/8/rotation = Quaternion(0.944803, -0.297323, 0.1046, 0.0894691)
+bones/8/rotation = Quaternion(0.943579, -0.311174, 0.0774, 0.0827001)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "wrist_r1"
 bones/9/parent = 8
 bones/9/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 0, 0)
 bones/9/enabled = true
 bones/9/position = Vector3(1.875, 0, 0)
-bones/9/rotation = Quaternion(-0.14934, 0.113652, 0.121714, 0.974662)
+bones/9/rotation = Quaternion(-0.230255, 0.0469055, 0.183715, 0.95448)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "leg_r1"
 bones/10/parent = 1
 bones/10/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.103271, 0.307129, -1.44385)
 bones/10/enabled = true
 bones/10/position = Vector3(-0.776367, 0.307129, -2.47119)
-bones/10/rotation = Quaternion(0.471848, 0.879975, -0.0257391, 0.0483869)
+bones/10/rotation = Quaternion(0.191108, 0.975928, -0.0648815, 0.082663)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "leg_r2"
 bones/11/parent = 10
 bones/11/rest = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 2.87158, 0, 0)
 bones/11/enabled = true
 bones/11/position = Vector3(1.9812, 0, 0)
-bones/11/rotation = Quaternion(0.771057, -0.636766, 0, 0)
+bones/11/rotation = Quaternion(0.844126, -0.536144, 0, 0)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "ankle_r1"
 bones/12/parent = 11
 bones/12/rest = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 2.0083, 0, 0)
 bones/12/enabled = true
 bones/12/position = Vector3(2.0083, 0, 0)
-bones/12/rotation = Quaternion(0.150828, 0.0333641, -0.858587, 0.488841)
+bones/12/rotation = Quaternion(0.143896, 0.00433744, -0.880384, 0.451885)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "leg_l1"
 bones/13/parent = 1
 bones/13/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.103271, 0.307129, 1.44385)
 bones/13/enabled = true
 bones/13/position = Vector3(-0.776611, 0.307129, 2.47168)
-bones/13/rotation = Quaternion(0.416019, 0.879766, 0.120694, -0.195892)
+bones/13/rotation = Quaternion(0.107873, 0.98133, 0.0565814, -0.148843)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/name = "leg_l2"
 bones/14/parent = 13
 bones/14/rest = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 2.87158, 0, 0)
 bones/14/enabled = true
 bones/14/position = Vector3(1.98242, 0, 0)
-bones/14/rotation = Quaternion(0.781778, -0.623557, 0, 0)
+bones/14/rotation = Quaternion(0.915858, -0.401503, 0, 0)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "ankle_l1"
 bones/15/parent = 14
 bones/15/rest = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 2.0083, 0, 0)
 bones/15/enabled = true
 bones/15/position = Vector3(2.0083, 0, 0)
-bones/15/rotation = Quaternion(-0.172555, 0.119666, -0.81403, 0.541535)
+bones/15/rotation = Quaternion(-0.228568, 0.0738896, -0.788041, 0.566823)
 bones/15/scale = Vector3(1, 1, 1)
 
 [node name="Body" type="MeshInstance3D" parent="Model"]
@@ -1266,6 +1263,14 @@ next_state = NodePath("")
 
 [node name="Running" type="Node" parent="XSM/HorizontalMoves"]
 script = ExtResource("10_ipkbh")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="Crouching" type="Node" parent="XSM/HorizontalMoves"]
+script = ExtResource("22_50mka")
 disabled = false
 debug_mode = false
 target_path = NodePath("")

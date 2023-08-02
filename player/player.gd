@@ -6,6 +6,8 @@ var GRAVITY: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export_group("Movement physics")
 ## Horizontal speed.
 @export var RUN_SPEED: float
+## Horizontal deceleration while being pushed by a force such as a longjump or kick.
+@export var SOFT_X_DAMPING: float
 ## Horizontal deceleration rate.
 @export var DECEL_STRENGTH: float 
 ## Run speed multiplier of a crawl.

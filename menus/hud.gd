@@ -20,6 +20,7 @@ func assign_debug_player(whom: Player) -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
+		Utils.set_discord_status(Utils.RPC_STATUS.InMenu)
 		sfx.stream = SFXs["cancel"]
 		sfx.play()
 		Transitionizer.transition(Transitionizer.Styles.DISSOLVE, Transitionizer.Styles.DISSOLVE, true, "res://maps/starting_hall.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgf3vqewknwlg"]
+[gd_scene load_steps=9 format=3 uid="uid://cgf3vqewknwlg"]
 
 [ext_resource type="Script" path="res://globals/transitionizer.gd" id="1_w0ix0"]
 [ext_resource type="Script" path="res://globals/resources/bbcode_ghost.gd" id="2_be0ql"]
@@ -43,6 +43,9 @@ _data = {
 "dissolve": SubResource("Animation_cspy6")
 }
 
+[sub_resource type="FontVariation" id="FontVariation_8nc5p"]
+spacing_glyph = 1
+
 [node name="Transitionizer" type="CanvasLayer"]
 script = ExtResource("1_w0ix0")
 
@@ -82,3 +85,20 @@ speed_scale = 1.25
 libraries = {
 "": SubResource("AnimationLibrary_w326p")
 }
+
+[node name="LabelWatermark" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -58.0
+offset_right = 221.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = SubResource("FontVariation_8nc5p")
+theme_override_font_sizes/font_size = 8
+text = "sm64dsvs yy-mm-dd
+private build"
+vertical_alignment = 2
