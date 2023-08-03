@@ -11,8 +11,8 @@ func _on_update(_delta) -> void:
 	if (target.velocity * Vector3(1, 0, 1)).length() != 0:
 		change_state("Running")
 	
-	if Input.is_action_just_pressed("crouch"):
-		change_state("Crouching")
+#	if Input.is_action_just_pressed("crouch"):
+#		change_state("Crouching")
 
 
 func _on_exit(_args) -> void:

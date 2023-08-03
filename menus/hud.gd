@@ -24,6 +24,8 @@ func _process(_delta: float) -> void:
 		sfx.stream = SFXs["cancel"]
 		sfx.play()
 		Transitionizer.transition(Transitionizer.Styles.DISSOLVE, Transitionizer.Styles.DISSOLVE, true, "res://maps/starting_hall.tscn")
+	
+	$TimerGraphic/LabelTime.text = str(int($TimerMatch.time_left))
 
 
 func _on_cam_shifted(direction: int) -> void: # -1 left, 0 stopped, 1 right

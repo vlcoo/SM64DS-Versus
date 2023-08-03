@@ -1,0 +1,213 @@
+[gd_scene load_steps=18 format=3 uid="uid://cc113qoys1xmk"]
+
+[ext_resource type="Script" path="res://menus/results.gd" id="1_gxds0"]
+[ext_resource type="Shader" path="res://menus/theme_resources/blurry_panel.gdshader" id="2_g50yr"]
+[ext_resource type="FontFile" uid="uid://dkraie6pjj6a" path="res://menus/fonts/sm64ds_title.ttf" id="3_luq7l"]
+[ext_resource type="StyleBox" uid="uid://dcuty57tfpx8a" path="res://menus/theme_resources/btn_hard.tres" id="4_mj68l"]
+[ext_resource type="Texture2D" uid="uid://dkiskjjd77q7v" path="res://menus/graphics/btn_hard.png" id="5_s0rgr"]
+[ext_resource type="Texture2D" uid="uid://ddtjnf88hlq3n" path="res://menus/graphics/btn_hard_disabled.png" id="6_gqnnx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4cfb2"]
+shader = ExtResource("2_g50yr")
+shader_parameter/blur = 0.0
+shader_parameter/saturation = 1.0
+
+[sub_resource type="Animation" id="Animation_bhkcv"]
+resource_name = "in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/blur")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/saturation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_blgxq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/blur")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/saturation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5dmgq"]
+_data = {
+"RESET": SubResource("Animation_blgxq"),
+"in": SubResource("Animation_bhkcv")
+}
+
+[sub_resource type="FontVariation" id="FontVariation_4yc5l"]
+base_font = ExtResource("3_luq7l")
+spacing_glyph = 3
+
+[sub_resource type="Gradient" id="Gradient_tnuxl"]
+offsets = PackedFloat32Array(0, 0.840467)
+colors = PackedColorArray(1, 1, 1, 1, 0.539063, 0.125, 0.980469, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lsvgd"]
+gradient = SubResource("Gradient_tnuxl")
+width = 10
+
+[sub_resource type="FontVariation" id="FontVariation_k3lkl"]
+base_font = ExtResource("3_luq7l")
+spacing_glyph = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c43bp"]
+texture = ExtResource("5_s0rgr")
+texture_margin_left = 7.0
+texture_margin_top = 6.0
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+expand_margin_left = 12.0
+expand_margin_top = 2.0
+expand_margin_right = 12.0
+expand_margin_bottom = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.627451, 0.627451, 0.627451, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cxtmt"]
+texture = ExtResource("6_gqnnx")
+texture_margin_left = 7.0
+texture_margin_top = 6.0
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+expand_margin_left = 12.0
+expand_margin_top = 2.0
+expand_margin_right = 12.0
+expand_margin_bottom = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.627451, 0.627451, 0.627451, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5jbi4"]
+
+[node name="GameResults" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -600.0
+offset_bottom = -350.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_gxds0")
+metadata/_edit_vertical_guides_ = [600.0]
+metadata/_edit_horizontal_guides_ = [350.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+light_mask = 0
+material = SubResource("ShaderMaterial_4cfb2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 125.0
+offset_right = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(350, 350)
+metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5dmgq")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource("FontVariation_4yc5l")
+text = "TIME UP"
+horizontal_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="VBoxContainer/Label"]
+position = Vector2(66.1538, 7.56269)
+rotation = 1.5708
+scale = Vector2(1.51218, 135.868)
+blend_mode = 2
+texture = SubResource("GradientTexture1D_lsvgd")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0.662745, 0.886275, 0.286275, 1)
+theme_override_colors/font_pressed_color = Color(0.662745, 0.886275, 0.286275, 1)
+theme_override_colors/font_hover_color = Color(0.662745, 0.886275, 0.286275, 1)
+theme_override_colors/font_disabled_color = Color(0.5625, 0.5625, 0.5625, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = SubResource("FontVariation_k3lkl")
+theme_override_styles/normal = ExtResource("4_mj68l")
+theme_override_styles/hover = ExtResource("4_mj68l")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_c43bp")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_cxtmt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5jbi4")
+toggle_mode = true
+action_mode = 0
+text = "CONTINUE"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
