@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bjttk5mlmb6xu"]
+[gd_scene load_steps=36 format=3 uid="uid://bjttk5mlmb6xu"]
 
 [ext_resource type="Script" path="res://maps/game_manager.gd" id="1_i32e0"]
 [ext_resource type="Environment" uid="uid://el55gy15py1t" path="res://globals/resources/default_environment.tres" id="2_c6gmn"]
@@ -16,7 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://cqtxprjf6ohb" path="res://maps/assets/BattleFort/wood.png" id="13_hq5u6"]
 [ext_resource type="Texture2D" uid="uid://w865d57v86n8" path="res://maps/assets/BattleFort/soil.png" id="14_xe6hp"]
 [ext_resource type="AudioStream" uid="uid://c4qvebjwvjprf" path="res://audio/music/athletic.ogg" id="16_v714x"]
-[ext_resource type="PackedScene" uid="uid://bsosdwgi58cu8" path="res://menus/hud.tscn" id="19_jfuhx"]
+[ext_resource type="PackedScene" uid="uid://cc113qoys1xmk" path="res://menus/results.tscn" id="18_bq60d"]
+[ext_resource type="PackedScene" uid="uid://bnyrmu4rcmj1i" path="res://menus/hud.tscn" id="19_jfuhx"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_daq8v"]
 
@@ -293,3 +294,8 @@ bus = &"FadeableMusic"
 
 [node name="GameHUD" parent="." instance=ExtResource("19_jfuhx")]
 metadata/_edit_lock_ = true
+
+[node name="GameResults" parent="." instance=ExtResource("18_bq60d")]
+visible = false
+
+[connection signal="match_timer_timeout" from="GameHUD" to="." method="_on_timer_match_timeout"]

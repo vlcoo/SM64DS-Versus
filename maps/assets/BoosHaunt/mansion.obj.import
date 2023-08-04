@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cdghri4dpdkp0"
+path="res://.godot/imported/mansion.obj-f4c2126c251288f46fa7613372e976e4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/mansion.obj-f4c2126c251288f46fa7613372e976e4.mesh"]
+
+source_file="res://maps/assets/BoosHaunt/mansion.obj"
+dest_files=["res://.godot/imported/mansion.obj-f4c2126c251288f46fa7613372e976e4.mesh", "res://.godot/imported/mansion.obj-f4c2126c251288f46fa7613372e976e4.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

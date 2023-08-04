@@ -15,7 +15,7 @@ var SFXs: Dictionary = {
 }
 
 var tween: Tween
-var time_remaining := 10
+var time_remaining := -1
 var time_is_low := false
 
 signal match_timer_timeout
@@ -23,6 +23,10 @@ signal match_timer_timeout
 
 func assign_debug_player(whom: Player) -> void:
 	$Debug.player = whom
+
+
+func _ready() -> void:
+	if time_remaining < 0: timer_second.stop()
 
 
 func _process(_delta: float) -> void:

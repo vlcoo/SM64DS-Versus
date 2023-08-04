@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dmas2apuiudyt"]
+[gd_scene load_steps=60 format=3 uid="uid://dmas2apuiudyt"]
 
 [ext_resource type="Script" path="res://maps/game_manager.gd" id="1_3nnfy"]
 [ext_resource type="AudioStream" uid="uid://cr6ksuwg6523a" path="res://audio/music/amb_birds.ogg" id="2_xu4dl"]
@@ -20,9 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://djtgbl8q704cu" path="res://maps/assets/BoosHaunt/th_pic_b.png" id="18_gl4p5"]
 [ext_resource type="Texture2D" uid="uid://bn7xtf0uuepvj" path="res://maps/assets/BoosHaunt/th_hasira.png" id="19_bliqc"]
 [ext_resource type="Texture2D" uid="uid://bvnkgq2h2tdm1" path="res://maps/assets/BoosHaunt/th_tesuri00.png" id="20_82kv1"]
+[ext_resource type="PackedScene" uid="uid://cc113qoys1xmk" path="res://menus/results.tscn" id="24_ho5yc"]
 [ext_resource type="AudioStream" uid="uid://dkge0bxak0oq1" path="res://audio/sfx/environment/waterfall.ogg" id="29_f3llm"]
 [ext_resource type="PackedScene" uid="uid://cy58lnuwusixd" path="res://non-playable_entities/star/star.tscn" id="30_2unww"]
-[ext_resource type="PackedScene" uid="uid://bsosdwgi58cu8" path="res://menus/hud.tscn" id="31_y4oa0"]
+[ext_resource type="PackedScene" uid="uid://bnyrmu4rcmj1i" path="res://menus/hud.tscn" id="31_y4oa0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4uo1p"]
 panorama = ExtResource("3_4wi84")
@@ -600,3 +601,8 @@ bus = &"SFX"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735427, 0.198891, 4.75849)
 
 [node name="GameHUD" parent="." instance=ExtResource("31_y4oa0")]
+
+[node name="GameResults" parent="." instance=ExtResource("24_ho5yc")]
+visible = false
+
+[connection signal="match_timer_timeout" from="GameHUD" to="." method="_on_timer_match_timeout"]
