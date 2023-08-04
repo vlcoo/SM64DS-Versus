@@ -99,6 +99,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = SubResource("FontVariation_8nc5p")
 theme_override_font_sizes/font_size = 8
-text = "sm64dsvs yy-mm-dd
+text = "sm64dsvs
 private build"
 vertical_alignment = 2

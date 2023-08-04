@@ -12,33 +12,6 @@ shader = ExtResource("2_g50yr")
 shader_parameter/blur = 0.0
 shader_parameter/saturation = 1.0
 
-[sub_resource type="Animation" id="Animation_bhkcv"]
-resource_name = "in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/blur")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:material:shader_parameter/saturation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_blgxq"]
 length = 0.001
 tracks/0/type = "value"
@@ -64,6 +37,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_bhkcv"]
+resource_name = "in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/blur")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/saturation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5dmgq"]
@@ -179,13 +179,23 @@ layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = SubResource("FontVariation_4yc5l")
-text = "TIME UP"
+text = "DUE TO CIRCUMSTANCES
+BEYOND OUR CONTROL,
+THE DESIGNATED TIME
+ALLOCATED FOR THE
+ONGOING MATCH HAS
+NOW REACHED ITS
+COMPLETE AND DEFINITIVE
+CONCLUSION, LEAVING
+NO ROOM FOR
+FURTHER EXTENSION
+OR CONTINUATION."
 horizontal_alignment = 1
 
 [node name="PointLight2D" type="PointLight2D" parent="VBoxContainer/Label"]
-position = Vector2(66.1538, 7.56269)
+position = Vector2(158.128, 98.592)
 rotation = 1.5708
-scale = Vector2(1.51218, 135.868)
+scale = Vector2(19.718, 319.817)
 blend_mode = 2
 texture = SubResource("GradientTexture1D_lsvgd")
 
@@ -208,6 +218,6 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_cxtmt")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5jbi4")
 toggle_mode = true
 action_mode = 0
-text = "CONTINUE"
+text = "QUIT"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

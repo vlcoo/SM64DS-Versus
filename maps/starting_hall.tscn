@@ -768,6 +768,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1200.0
+offset_bottom = 700.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1014,7 +1016,7 @@ next/fadeout_ui = &"enter_picture"
 [connection signal="pressed" from="Control/ContainerPlayerList/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/ContainerPlayerList/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Control/ContainerMapSelector/GridContainer/TextureButton" to="." method="_on_map_selected" binds= ["castle_grounds"]]
-[connection signal="pressed" from="Control/ContainerMapSelector/GridContainer/TextureButton2" to="." method="_on_map_selected" binds= ["beach_isle"]]
+[connection signal="pressed" from="Control/ContainerMapSelector/GridContainer/TextureButton2" to="." method="_on_map_selected" binds= ["sunshine_isles"]]
 [connection signal="pressed" from="Control/ContainerMapSelector/GridContainer/TextureButton3" to="." method="_on_map_selected" binds= ["secret_slide"]]
 [connection signal="pressed" from="Control/ContainerMapSelector/GridContainer/TextureButton4" to="." method="_on_map_selected" binds= ["battle_fort"]]
 [connection signal="pressed" from="Control/ContainerMapSelector/Button" to="." method="_on_button_3_pressed"]

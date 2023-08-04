@@ -1,17 +1,24 @@
 extends Control
 
 @onready var sfx: AudioStreamPlayer = $AudioStreamPlayer
-
 @onready var texture_cam_l: TextureRect = $TextureCamL
 @onready var texture_cam_zoom: TextureRect = $TextureCamZoom
 @onready var texture_cam_r: TextureRect = $TextureCamR
+@onready var timer_second: Timer = $TimerSecond
+@onready var label_time: Label = $TimerGraphic/LabelTime
+@onready var label_time_low: Label = $TimerGraphic/LabelTimeLow
 
 var SFXs: Dictionary = {
 	"got_star": preload("res://audio/sfx/jingles/star_got.ogg"),
-	"cancel": preload("res://audio/sfx/system/return.ogg")
+	"cancel": preload("res://audio/sfx/system/return.ogg"),
+	"time_low": preload("res://audio/sfx/system/time_low.ogg")
 }
 
 var tween: Tween
+var time_remaining := 10
+var time_is_low := false
+
+signal match_timer_timeout
 
 
 func assign_debug_player(whom: Player) -> void:
@@ -24,8 +31,6 @@ func _process(_delta: float) -> void:
 		sfx.stream = SFXs["cancel"]
 		sfx.play()
 		Transitionizer.transition(Transitionizer.Styles.DISSOLVE, Transitionizer.Styles.DISSOLVE, true, "res://maps/starting_hall.tscn")
-	
-	$TimerGraphic/LabelTime.text = str(int($TimerMatch.time_left))
 
 
 func _on_cam_shifted(direction: int) -> void: # -1 left, 0 stopped, 1 right
@@ -48,3 +53,20 @@ func _on_star_got(new_count: int) -> void:
 	sfx.stream = SFXs["got_star"]
 	sfx.play()
 	$LabelStars.text = "st><" + str(new_count)
+
+
+func _on_timer_second_timeout() -> void:
+	if time_remaining <= 0: 
+		timer_second.stop()
+		match_timer_timeout.emit()
+		return
+	
+	time_remaining -= 1
+	label_time.text = str(time_remaining)
+	label_time_low.text = str(time_remaining)
+	
+	if time_remaining in [1, 3, 5]:
+		label_time.visible = false
+		label_time_low.visible = true
+		sfx.stream = SFXs["time_low"]
+		sfx.play()

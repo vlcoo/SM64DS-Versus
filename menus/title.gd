@@ -14,7 +14,6 @@ var SFXs: Dictionary = {
 
 func _ready() -> void:
 	get_node("ContainerSettings/HBoxContainer2/Button" + str(Utils.config.get_value("settings", "graphics", 2) + 1)).button_pressed = true
-	print(ProjectSettings.get_setting("rendering/anti_aliasing/quality/msaa_3d"))
 
 
 func _on_btn_exit_pressed() -> void:

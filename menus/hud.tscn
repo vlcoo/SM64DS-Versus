@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bnyrmu4rcmj1i"]
+[gd_scene load_steps=14 format=3 uid="uid://bnyrmu4rcmj1i"]
 
 [ext_resource type="Script" path="res://menus/hud.gd" id="1_gns64"]
 [ext_resource type="Texture2D" uid="uid://dhkjf2jrojwrh" path="res://menus/graphics/hint_time.png" id="2_4b2oi"]
@@ -19,6 +19,14 @@ colors = PackedColorArray(1, 1, 1, 1, 0.980469, 0.824219, 0.21875, 1, 0.980469, 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bru0a"]
 gradient = SubResource("Gradient_fe3k3")
 width = 10
+
+[sub_resource type="Gradient" id="Gradient_lmvxd"]
+offsets = PackedFloat32Array(0, 0.459144)
+colors = PackedColorArray(1, 1, 1, 1, 0.769531, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d2gkv"]
+gradient = SubResource("Gradient_lmvxd")
+width = 20
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3epho"]
 atlas = ExtResource("6_oeuds")
@@ -50,7 +58,13 @@ offset_right = -125.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(350, 350)
-metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="ReferenceRect"]
+visible = false
+light_mask = 0
+layout_mode = 0
+offset_right = 350.0
+offset_bottom = 350.0
 
 [node name="TimerGraphic" type="TextureRect" parent="."]
 light_mask = 0
@@ -83,6 +97,28 @@ rotation = 1.5708
 scale = Vector2(1.51218, 31.8107)
 blend_mode = 2
 texture = SubResource("GradientTexture1D_bru0a")
+
+[node name="LabelTimeLow" type="Label" parent="TimerGraphic"]
+visible = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = 28.0
+offset_right = 37.0
+offset_bottom = 84.0
+pivot_offset = Vector2(19.5, 29)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = SubResource("FontVariation_32ign")
+theme_override_font_sizes/font_size = 56
+text = "3"
+horizontal_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="TimerGraphic/LabelTimeLow"]
+position = Vector2(18.3749, 25.4375)
+rotation = 1.5708
+scale = Vector2(2.59968, 68.8107)
+blend_mode = 2
+texture = SubResource("GradientTexture1D_d2gkv")
 
 [node name="LabelStars" type="Label" parent="."]
 layout_mode = 1
@@ -177,7 +213,7 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 8
 text = "content"
 
-[node name="TimerMatch" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
+[node name="TimerSecond" type="Timer" parent="."]
 autostart = true
+
+[connection signal="timeout" from="TimerSecond" to="." method="_on_timer_second_timeout"]
