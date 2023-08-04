@@ -13,7 +13,7 @@ func _on_enter(_args) -> void:
 
 func _after_enter(_args) -> void:
 	if not _args and target.is_node_ready() or (_args and not _args.has("no_land_sfx")): 
-		target.play_sfx("step_land", true)
+		target.play_sfx("land", true)
 	
 	if _args and _args.has("from_jump"): 
 		jump2_timer = add_timer("2nd_jump", target.JUMP2_TIME)
@@ -31,7 +31,8 @@ func _after_enter(_args) -> void:
 func _on_update(_delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and not target.y_locked:
 		if not jump2_timer.is_stopped(): change_state("2Jumping")
-		elif is_active("Running") and not jump3_timer.is_stopped(): change_state("3Jumping")
+		elif (target.velocity * Vector3(1, 0, 1)).length() > target.RUN_SPEED - 0.1 and \
+		not jump3_timer.is_stopped(): change_state("3Jumping")
 		else: change_state("Jumping")
 	
 	if not target.is_on_floor():

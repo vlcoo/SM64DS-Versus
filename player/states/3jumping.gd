@@ -6,7 +6,7 @@ func _on_enter(_args) -> void:
 	target.velocity.y = target.JUMP_STRENGTH * target.JUMP3_MULTIPLIER
 	target.animation["parameters/conditions/3jumped"] = true
 	target.play_sfx(["ya", "yoshi"].pick_random())
-	target.play_sfx("step_jump", true)
+	target.play_sfx("jump", true)
 
 
 func _on_update(delta: float) -> void:

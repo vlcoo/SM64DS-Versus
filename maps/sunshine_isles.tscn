@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://fe5ell7s1bkr"]
+[gd_scene load_steps=33 format=3 uid="uid://fe5ell7s1bkr"]
 
 [ext_resource type="Script" path="res://maps/game_manager.gd" id="1_n0qnr"]
 [ext_resource type="Texture2D" uid="uid://cc61d28ks83ud" path="res://maps/assets/BeachIsle/kusa.png" id="2_wol23"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c0hvoxdg1ee44" path="res://maps/assets/BeachIsle/yasi_00.png" id="11_f0dit"]
 [ext_resource type="Texture2D" uid="uid://cj1wj2bnnavvo" path="res://maps/assets/BeachIsle/yasi_01.png" id="12_wetxp"]
 [ext_resource type="Material" uid="uid://dgycxivtsmo6g" path="res://maps/environment/water_mat.tres" id="13_h5ro7"]
+[ext_resource type="Script" path="res://maps/environment/floor_type_area.gd" id="14_37xee"]
 [ext_resource type="PackedScene" uid="uid://bnyrmu4rcmj1i" path="res://menus/hud.tscn" id="14_o8x8q"]
 [ext_resource type="PackedScene" uid="uid://cc113qoys1xmk" path="res://menus/results.tscn" id="15_ffm0k"]
 
@@ -239,6 +240,16 @@ shape = SubResource("ConcavePolygonShape3D_swc86")
 [node name="Water" type="MeshInstance3D" parent="3D/Model"]
 transform = Transform3D(5.72688, 0, 0, 0, 1, 0, 0, 0, 5.34178, 0, 0.035943, 0)
 mesh = SubResource("PlaneMesh_2rack")
+
+[node name="Splash" type="Area3D" parent="3D/Model"]
+collision_mask = 2
+script = ExtResource("14_37xee")
+type = 8
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="3D/Model/Splash"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.210817, 0)
+depth = 0.2
+polygon = PackedVector2Array(-5.75773, -5.3687, 5.71883, -5.32979, 5.69938, 5.27144, -5.73828, 5.31034)
 
 [node name="PlayerSpawn" type="Marker3D" parent="3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11988, 0.586432, -0.824106)

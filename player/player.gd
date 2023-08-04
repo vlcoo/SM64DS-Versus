@@ -2,6 +2,8 @@
 class_name Player
 extends CharacterBody3D
 
+enum FloorTypes {NOCODE, GROUND, GRASS, FLOWER, ICE, ROCK, SAND, SNOW, WATER, WIRE, WOOD}
+
 var GRAVITY: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export_group("Movement physics")
 ## Horizontal speed.
@@ -47,9 +49,7 @@ var GRAVITY: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 ## If enabled, this player will be controllable and the camera will follow them.
 @export var camera_follow: bool = true
 
-static var SFXs: Dictionary = {
-	"step_jump": preload("res://audio/sfx/environment/step_ground_jump.ogg"),
-	"step_land": preload("res://audio/sfx/environment/step_ground_land.ogg"),
+var SFXs: Dictionary = {
 	"impact_groundpound": preload("res://audio/sfx/environment/impact_groundpound.ogg"),
 	"roll": preload("res://audio/sfx/environment/roll.ogg"),
 	"star_touched": preload("res://audio/sfx/jingles/star_touched.ogg")
@@ -72,6 +72,7 @@ var _is_cam_zoomed: bool = false
 
 var x_locked: bool = false
 var y_locked: bool = false
+var current_floor: FloorTypes = FloorTypes.NOCODE
 
 var star_count: int = 0
 
@@ -84,6 +85,9 @@ func _ready() -> void:
 	for file in DirAccess.open("res://audio/sfx/voice/").get_files():
 		if ".import" in file or not "y_" in file: continue
 		SFXs[file.replace(".ogg", "").replace("y_", "")] = load("res://audio/sfx/voice/" + file)
+	for file in DirAccess.open("res://audio/sfx/environment/impact_floors/").get_files():
+		if ".import" in file: continue
+		SFXs[file.replace(".ogg", "")] = load("res://audio/sfx/environment/impact_floors/" + file)
 	
 	$SpringArmPivot/SpringArm3D/Camera3D.current = camera_follow
 	$Nametag.visible = camera_follow
@@ -104,11 +108,13 @@ func start_picture_anim() -> void:
 
 
 func play_sfx(which: String, is_not_voice: bool = false) -> void:
-	assert(which in SFXs.keys(), "Tried to play SFX that doesn't exist.")
 	if is_not_voice:
-		sfx_steps.stream = SFXs[which]
+		var step_sfx: String = which if not which in ["land", "jump", "walk"] else which + "_" + FloorTypes.keys()[current_floor].to_lower()
+		assert(step_sfx in SFXs.keys(), "Tried to play SFX that doesn't exist.")
+		sfx_steps.stream = SFXs[step_sfx]
 		sfx_steps.play()
 	else:
+		assert(which in SFXs.keys(), "Tried to play SFX that doesn't exist.")
 		sfx.stream = SFXs[which]
 		sfx.play()
 
