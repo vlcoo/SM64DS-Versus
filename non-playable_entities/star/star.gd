@@ -1,3 +1,4 @@
+class_name Star
 extends RigidBody3D
 
 ## Amount of force to apply when a player first touches the star.
@@ -9,6 +10,27 @@ extends RigidBody3D
 
 var sfx_bounce := preload("res://audio/sfx/environment/star_bounce.ogg")
 var sfx_breach := preload("res://audio/sfx/environment/star_breach.ogg")
+
+var starting_pos: Vector3
+
+signal collected(star)
+
+
+func _ready() -> void:
+	starting_pos = global_position
+
+
+func appear() -> void:
+	global_position = starting_pos
+	$Area3D.monitoring = true
+	$AnimationPlayer.play("appear")
+
+
+func disappear() -> void:
+	$Area3D.monitoring = false
+	$AnimationPlayer.play("disappear")
+	collected.emit(self)
+	freeze = true
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -22,7 +44,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			sfx.play()
 		else:
 			body.on_collected_star()
-			queue_free()
+			disappear()
 	elif body.is_in_group("Terrain"):
 		sfx.stream = sfx_bounce
 		sfx.play()
