@@ -1,0 +1,10 @@
+[gd_resource type="CameraAttributesPractical" format=3 uid="uid://dhcc1afs2ikyn"]
+
+[resource]
+auto_exposure_enabled = true
+auto_exposure_scale = 0.6
+auto_exposure_speed = 2.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 7.0
+dof_blur_amount = 0.05
+auto_exposure_min_sensitivity = 300.0

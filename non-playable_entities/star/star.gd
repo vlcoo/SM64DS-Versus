@@ -7,6 +7,7 @@ extends RigidBody3D
 @export var BOUNCE_STRENGTH: float
 
 @onready var sfx: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var area_3d: Area3D = $Area3D
 
 var sfx_bounce := preload("res://audio/sfx/environment/star_bounce.ogg")
 var sfx_breach := preload("res://audio/sfx/environment/star_breach.ogg")
@@ -22,12 +23,12 @@ func _ready() -> void:
 
 func appear() -> void:
 	global_position = starting_pos
-	$Area3D.monitoring = true
+	area_3d.set_deferred("monitoring", true)
 	$AnimationPlayer.play("appear")
 
 
 func disappear() -> void:
-	$Area3D.monitoring = false
+	area_3d.set_deferred("monitoring", false)
 	$AnimationPlayer.play("disappear")
 	collected.emit(self)
 	freeze = true
