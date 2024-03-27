@@ -765,7 +765,7 @@ progress = 0.504138
 tilt_enabled = false
 
 [node name="Player4" type="PathFollow3D" parent="3D/Spawnpoints"]
-transform = Transform3D(-0.722097, 0.00454771, -0.691775, 0.00629779, 0.999978, 9.31321e-09, 0.691761, -0.00435664, -0.722111, 0.342921, -0.000363118, -0.383301)
+transform = Transform3D(-0.722097, 0.00454771, -0.691775, 0.00629778, 0.999978, 9.31321e-09, 0.691761, -0.00435664, -0.722111, 0.342921, -0.000363118, -0.383301)
 progress = 0.752444
 tilt_enabled = false
 
@@ -775,6 +775,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1200.0
+offset_bottom = 700.0
 grow_horizontal = 2
 grow_vertical = 2
 

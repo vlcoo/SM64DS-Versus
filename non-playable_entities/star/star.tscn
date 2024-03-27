@@ -303,10 +303,10 @@ draw_pass_1 = SubResource("PrismMesh_45tyb")
 shape = SubResource("SphereShape3D_ca7mk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "disappear"
 libraries = {
 "": SubResource("AnimationLibrary_toeh5")
 }
+autoplay = "disappear"
 next/appear = &"idle_spin"
 
 [node name="Area3D" type="Area3D" parent="."]

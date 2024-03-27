@@ -81,10 +81,10 @@ fit_content = true
 custom_effects = [SubResource("RichTextEffect_jiqf8")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-speed_scale = 1.25
 libraries = {
 "": SubResource("AnimationLibrary_w326p")
 }
+speed_scale = 1.25
 
 [node name="LabelWatermark" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0.392157)
