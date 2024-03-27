@@ -12,14 +12,14 @@ border_width_left = 14
 border_width_top = 14
 border_width_right = 14
 border_width_bottom = 14
-border_color = Color(1, 0, 0, 1)
+border_color = Color(0.929412, 0.0862745, 0.121569, 1)
 corner_radius_top_left = 46
 corner_radius_top_right = 46
 corner_radius_bottom_right = 46
 corner_radius_bottom_left = 46
-expand_margin_left = 24.0
+expand_margin_left = 28.0
 expand_margin_top = 12.0
-expand_margin_right = 24.0
+expand_margin_right = 28.0
 
 [sub_resource type="Animation" id="Animation_reeqp"]
 length = 0.001
@@ -127,11 +127,11 @@ theme_override_constants/separation = -120
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(0.929412, 0.0862745, 0.121569, 1)
 theme_override_fonts/font = ExtResource("1_ihbtd")
 theme_override_font_sizes/font_size = 56
 theme_override_styles/normal = SubResource("StyleBoxFlat_u6wu5")
-text = " helo "
+text = "helo"
 horizontal_alignment = 1
 vertical_alignment = 1
 

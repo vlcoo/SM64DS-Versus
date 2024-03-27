@@ -13,7 +13,6 @@ func _ready() -> void:
 	
 	var err: Error = config.load(CONFIG_PATH)
 	if err != OK: config = ConfigFile.new()
-	discord_sdk.app_id = 1136244950850351165
 
 
 func _on_tree_exiting() -> void:
@@ -28,17 +27,19 @@ func get_random_nick() -> String:
 
 
 func set_discord_status(status: RPC_STATUS, map_name: String = "", match_timer: int = 0) -> void:
-	match status:
-		RPC_STATUS.InMenu:
-			discord_sdk.details = "Browsing the Main Menu"
-			discord_sdk.state = ""
-			discord_sdk.large_image = "menu"
-			discord_sdk.end_timestamp = 0
-		RPC_STATUS.InGame:
-			discord_sdk.details = "Playing an offline match"
-			discord_sdk.state = map_name.replace("_", " ").capitalize()
-			discord_sdk.large_image = map_name
-			if match_timer > 0:
-				discord_sdk.end_timestamp = int(Time.get_unix_time_from_system()) + match_timer
+	pass
 	
-	discord_sdk.refresh()
+	#match status:
+		#RPC_STATUS.InMenu:
+			#discord_sdk.details = "Browsing the Main Menu"
+			#discord_sdk.state = ""
+			#discord_sdk.large_image = "menu"
+			#discord_sdk.end_timestamp = 0
+		#RPC_STATUS.InGame:
+			#discord_sdk.details = "Playing an offline match"
+			#discord_sdk.state = map_name.replace("_", " ").capitalize()
+			#discord_sdk.large_image = map_name
+			#if match_timer > 0:
+				#discord_sdk.end_timestamp = int(Time.get_unix_time_from_system()) + match_timer
+	#
+	#discord_sdk.refresh()

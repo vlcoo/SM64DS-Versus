@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="super super 64 super"
+config/tags=PackedStringArray("game")
 run/main_scene="res://menus/copyright_notice.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/show_image=false
 boot_splash/image="res://menus/graphics/splash.png"
 boot_splash/fullsize=false
@@ -26,7 +27,6 @@ buses/default_bus_layout="res://globals/resources/default_bus.tres"
 
 Transitionizer="*res://globals/transitionizer.tscn"
 Utils="*res://globals/utils.gd"
-DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 
 [display]
 
@@ -37,9 +37,13 @@ window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 window/vsync/vsync_mode=2
 
+[dotnet]
+
+project/assembly_name="super super 64 super"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-sdk-gd/plugin.cfg", "res://addons/xsm/plugin.cfg")
+enabled=PackedStringArray("res://addons/xsm/plugin.cfg")
 
 [filesystem]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://c3v43v28hxpce"]
+[gd_scene load_steps=94 format=3 uid="uid://c3v43v28hxpce"]
 
 [ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/on_ground/on_ground.gd" id="1"]
 [ext_resource type="Script" path="res://addons/xsm/state_sound.gd" id="1_o7hwj"]
@@ -37,7 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://cosbjrdku41lc" path="res://addons/xsm/examples/platformer/assets/sprites/decor/bg_hills.png" id="37"]
 [ext_resource type="Texture2D" uid="uid://cjif7qjqhos0d" path="res://addons/xsm/examples/platformer/assets/sprites/decor/bg_trees.png" id="38"]
 [ext_resource type="Texture2D" uid="uid://bqi4bnqcq3hbx" path="res://addons/xsm/examples/platformer/assets/sprites/player/light.png" id="39"]
-[ext_resource type="FontFile" uid="uid://c000k6dru7r6e" path="res://addons/xsm/examples/platformer/level/font_TIMESS__.ttf" id="40_oshkx"]
 [ext_resource type="Texture2D" uid="uid://bs3bj206fu1xt" path="res://addons/xsm/examples/platformer/assets/sprites/clouds/cloud1.png" id="43"]
 [ext_resource type="Script" path="res://addons/xsm/examples/platformer/level/clouds.gd" id="44"]
 [ext_resource type="AudioStream" uid="uid://b77rq8rh1rgbn" path="res://addons/xsm/examples/platformer/assets/sounds/move.wav" id="45"]
@@ -962,9 +961,9 @@ emission_shape = 1
 emission_sphere_radius = 15.0
 direction = Vector3(0, -1, 0)
 spread = 90.0
-gravity = Vector3(0, 50, 0)
 initial_velocity_min = 50.0
 initial_velocity_max = 100.0
+gravity = Vector3(0, 50, 0)
 
 [sub_resource type="AtlasTexture" id="107"]
 atlas = ExtResource("5")
@@ -1699,7 +1698,7 @@ offset_top = 259.0
 offset_right = 371.0
 offset_bottom = 363.0
 mouse_filter = 1
-theme_override_fonts/font = ExtResource("40_oshkx")
+theme_override_fonts/font = null
 text = "This game shows XSM in motion
 Press Left or Right to move, Up to jump !"
 
@@ -1711,7 +1710,7 @@ offset_top = -541.0
 offset_right = 343.0
 offset_bottom = -489.0
 mouse_filter = 1
-theme_override_fonts/font = ExtResource("40_oshkx")
+theme_override_fonts/font = null
 text = "You can now dash with the space bar !
 Enjoy ;)"
 
@@ -1723,7 +1722,7 @@ offset_top = -421.0
 offset_right = 1232.0
 offset_bottom = -343.0
 mouse_filter = 1
-theme_override_fonts/font = ExtResource("40_oshkx")
+theme_override_fonts/font = null
 text = "THE END !
 Now is time to
 dive in the code"
