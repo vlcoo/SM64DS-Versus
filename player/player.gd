@@ -120,7 +120,9 @@ func play_sfx(which: String, is_not_voice: bool = false) -> void:
 
 
 func _process(delta: float) -> void:
-	if not camera_follow: return
+	if not camera_follow: 
+		cam.current = false
+		return
 	
 	if Input.is_action_just_pressed("cam_zoom"):
 		$SpringArmPivot/CamAnimations.play("zoom_out" if _is_cam_zoomed else "zoom_in")

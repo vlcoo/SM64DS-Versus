@@ -704,7 +704,7 @@ light_bake_mode = 1
 shadow_enabled = true
 directional_shadow_mode = 1
 
-[node name="DirLightDay" type="DirectionalLight3D" parent="3D"]
+[node name="DirLightMain" type="DirectionalLight3D" parent="3D"]
 transform = Transform3D(1, 0, 0, 0, 0.810042, 0.586372, 0, -0.586372, 0.810042, 0, 0, 0)
 light_indirect_energy = 2.554
 light_bake_mode = 1

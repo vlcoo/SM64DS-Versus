@@ -3,6 +3,11 @@ extends Control
 var player: Player
 
 
+func _ready():
+	if Utils.benchmark_mode:
+		process_mode = Node.PROCESS_MODE_DISABLED
+
+
 func _process(_delta: float) -> void:
 	if not player:
 		$Label2.text = "no player?"

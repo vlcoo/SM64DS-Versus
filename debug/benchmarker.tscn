@@ -1,0 +1,361 @@
+[gd_scene load_steps=3 format=3 uid="uid://d032owiqpr8"]
+
+[ext_resource type="Script" path="res://debug/benchmarker.gd" id="1_7o8nt"]
+[ext_resource type="FontFile" uid="uid://dkraie6pjj6a" path="res://menus/fonts/sm64ds_title.ttf" id="2_iht4n"]
+
+[node name="Benchmarker" type="Control"]
+z_index = 99
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_7o8nt")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="TimerFPSs" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="TimerTest" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="BenchmarkedWorld" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(1200, 700)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 99
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.709804)
+metadata/_edit_lock_ = true
+
+[node name="ContainerResults" type="HBoxContainer" parent="."]
+z_index = 99
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.897
+offset_bottom = 0.0999756
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConainerNames" type="VBoxContainer" parent="ContainerResults"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="Label" parent="ContainerResults/ConainerNames"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource("2_iht4n")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelName1" type="Label" parent="ContainerResults/ConainerNames"]
+layout_mode = 2
+size_flags_horizontal = 11
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource("2_iht4n")
+theme_override_font_sizes/font_size = 32
+text = "scene initial load"
+horizontal_alignment = 2
+
+[node name="LabelName2" type="Label" parent="ContainerResults/ConainerNames"]
+layout_mode = 2
+size_flags_horizontal = 11
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource("2_iht4n")
+theme_override_font_sizes/font_size = 32
+text = "simple activity"
+horizontal_alignment = 2
+
+[node name="LabelName3" type="Label" parent="ContainerResults/ConainerNames"]
+layout_mode = 2
+size_flags_horizontal = 11
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource("2_iht4n")
+theme_override_font_sizes/font_size = 32
+text = "scene switch"
+horizontal_alignment = 2
+
+[node name="LabelName4" type="Label" parent="ContainerResults/ConainerNames"]
+layout_mode = 2
+size_flags_horizontal = 11
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource("2_iht4n")
+theme_override_font_sizes/font_size = 32
+text = "camera pan"
+horizontal_alignment = 2
+
+[node name="LabelName5" type="Label" parent="ContainerResults/ConainerNames"]
+layout_mode = 2
+size_flags_horizontal = 11
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource("2_iht4n")
+theme_override_font_sizes/font_size = 32
+text = "complex activity"
+horizontal_alignment = 2
+
+[node name="VSeparator0" type="VSeparator" parent="ContainerResults"]
+layout_mode = 2
+
+[node name="ContainerLow" type="VBoxContainer" parent="ContainerResults"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="Label" parent="ContainerResults/ContainerLow"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource("2_iht4n")
+theme_override_font_sizes/font_size = 32
+text = "LOW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelTime1" type="Label" parent="ContainerResults/ContainerLow"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime2" type="Label" parent="ContainerResults/ContainerLow"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime3" type="Label" parent="ContainerResults/ContainerLow"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime4" type="Label" parent="ContainerResults/ContainerLow"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime5" type="Label" parent="ContainerResults/ContainerLow"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="VSeparator1" type="VSeparator" parent="ContainerResults"]
+layout_mode = 2
+
+[node name="ContainerMedium" type="VBoxContainer" parent="ContainerResults"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="Label" parent="ContainerResults/ContainerMedium"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource("2_iht4n")
+theme_override_font_sizes/font_size = 32
+text = "MEDIUM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelTime1" type="Label" parent="ContainerResults/ContainerMedium"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime2" type="Label" parent="ContainerResults/ContainerMedium"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime3" type="Label" parent="ContainerResults/ContainerMedium"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime4" type="Label" parent="ContainerResults/ContainerMedium"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime5" type="Label" parent="ContainerResults/ContainerMedium"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="ContainerResults"]
+layout_mode = 2
+
+[node name="ContainerHigh" type="VBoxContainer" parent="ContainerResults"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="Label" parent="ContainerResults/ContainerHigh"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 9
+theme_override_fonts/font = ExtResource("2_iht4n")
+theme_override_font_sizes/font_size = 32
+text = "HIGH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelTime1" type="Label" parent="ContainerResults/ContainerHigh"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime2" type="Label" parent="ContainerResults/ContainerHigh"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime3" type="Label" parent="ContainerResults/ContainerHigh"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime4" type="Label" parent="ContainerResults/ContainerHigh"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="LabelTime5" type="Label" parent="ContainerResults/ContainerHigh"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "..."
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 99
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.897
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0999756
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="LabelFPS" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 8
+text = "0 FPS"
+
+[node name="LabelRuntime" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 8
+text = "0 seconds"
+
+[node name="LabelStatus" type="Label" parent="Panel/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.0285645, 0.914062, 0, 1)
+text = "finished! please take a screenshot of this window before exiting."
+horizontal_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerFPSs" to="." method="_on_timer_fp_ss_timeout"]
+[connection signal="timeout" from="TimerTest" to="." method="_on_timer_test_timeout"]

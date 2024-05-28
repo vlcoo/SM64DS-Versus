@@ -6,6 +6,7 @@ enum RPC_STATUS {InMenu, InGame}
 var config: ConfigFile = ConfigFile.new()
 
 var player_nickname: String = "noname"
+var benchmark_mode: bool = false
 
 
 func _ready() -> void:
@@ -13,6 +14,8 @@ func _ready() -> void:
 	
 	var err: Error = config.load(CONFIG_PATH)
 	if err != OK: config = ConfigFile.new()
+	
+	benchmark_mode = ProjectSettings.get_setting("application/run/benchmark_mode", false)
 
 
 func _on_tree_exiting() -> void:

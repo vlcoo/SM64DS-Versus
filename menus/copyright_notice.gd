@@ -21,4 +21,7 @@ func get_company_name() -> String:
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	Transitionizer.transition(Transitionizer.Styles.DISSOLVE, Transitionizer.Styles.DISSOLVE, true, "res://menus/title.tscn")
+	Transitionizer.transition(
+		Transitionizer.Styles.DISSOLVE, Transitionizer.Styles.DISSOLVE, true, 
+		"res://debug/benchmarker.tscn" if Utils.benchmark_mode else "res://menus/title.tscn"
+	)
