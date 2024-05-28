@@ -22,6 +22,8 @@ func _ready() -> void:
 
 
 func appear() -> void:
+	if Utils.benchmark_mode and get_tree():
+		await get_tree().create_timer(randi_range(1, 4)).timeout
 	global_position = starting_pos
 	area_3d.set_deferred("monitoring", true)
 	$AnimationPlayer.play("appear")

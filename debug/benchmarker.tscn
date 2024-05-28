@@ -24,23 +24,10 @@ autostart = true
 wait_time = 0.25
 
 [node name="TimerTest" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 8.0
 one_shot = true
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="BenchmarkedWorld" type="SubViewport" parent="SubViewportContainer"]
-handle_input_locally = false
-gui_disable_input = true
-size = Vector2i(1200, 700)
-render_target_update_mode = 4
+[node name="BenchmarkedWorld" type="Node" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 99
@@ -183,31 +170,26 @@ vertical_alignment = 1
 [node name="LabelTime1" type="Label" parent="ContainerResults/ContainerLow"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime2" type="Label" parent="ContainerResults/ContainerLow"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime3" type="Label" parent="ContainerResults/ContainerLow"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime4" type="Label" parent="ContainerResults/ContainerLow"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime5" type="Label" parent="ContainerResults/ContainerLow"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="VSeparator1" type="VSeparator" parent="ContainerResults"]
@@ -236,31 +218,26 @@ vertical_alignment = 1
 [node name="LabelTime1" type="Label" parent="ContainerResults/ContainerMedium"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime2" type="Label" parent="ContainerResults/ContainerMedium"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime3" type="Label" parent="ContainerResults/ContainerMedium"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime4" type="Label" parent="ContainerResults/ContainerMedium"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime5" type="Label" parent="ContainerResults/ContainerMedium"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="VSeparator2" type="VSeparator" parent="ContainerResults"]
@@ -289,31 +266,26 @@ vertical_alignment = 1
 [node name="LabelTime1" type="Label" parent="ContainerResults/ContainerHigh"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime2" type="Label" parent="ContainerResults/ContainerHigh"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime3" type="Label" parent="ContainerResults/ContainerHigh"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime4" type="Label" parent="ContainerResults/ContainerHigh"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="LabelTime5" type="Label" parent="ContainerResults/ContainerHigh"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "..."
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="."]

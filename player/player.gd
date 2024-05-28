@@ -63,6 +63,7 @@ var SFXs: Dictionary = {
 @onready var particles: GPUParticles3D = $GPUParticles3D
 @onready var mat_head: ShaderMaterial = $Model/Head.mesh.surface_get_material(0)
 @onready var mat_body: ShaderMaterial = $Model/Head.mesh.surface_get_material(1)
+@onready var timer_simulated_input = $TimerSimulatedInput
 
 @onready var cam: Camera3D = $SpringArmPivot/SpringArm3D/Camera3D
 @onready var cam_pivot: Node3D = $SpringArmPivot
@@ -89,7 +90,7 @@ func _ready() -> void:
 		if ".import" in file: continue
 		SFXs[file.replace(".ogg", "")] = load("res://audio/sfx/environment/impact_floors/" + file)
 	
-	$SpringArmPivot/SpringArm3D/Camera3D.current = camera_follow
+	cam.current = camera_follow
 	$Nametag.visible = camera_follow
 	xsm.disabled = not camera_follow
 	
@@ -98,6 +99,8 @@ func _ready() -> void:
 	mat_head.set_shader_parameter("new_color", Color.from_hsv(h, 1.0, 0.7))
 	
 	if camera_follow: $Nametag/Label3D.text = Utils.player_nickname
+	if Utils.benchmark_mode: 
+		timer_simulated_input.start()
 
 
 func start_picture_anim() -> void:
@@ -157,3 +160,26 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		"anims_nsmb/big_hip_ed":
 			x_locked = false
 			y_locked = false
+
+
+func _on_simulated_input_timer_finished() -> void:
+	Input.action_release("crouch")
+	Input.action_release("jump")
+	Input.action_release("move_down")
+	Input.action_release("move_up")
+	Input.action_release("move_left")
+	Input.action_release("move_right")
+	
+	if randf() < 0.5: Input.action_press("crouch")
+	Input.action_press("jump")
+		
+	match randi_range(0, 3):
+		0:
+			Input.action_press("move_down")
+		1:
+			Input.action_press("move_up")
+		2:
+			Input.action_press("move_left")
+		3:
+			Input.action_press("move_right")
+	timer_simulated_input.wait_time = randf_range(0.5, 1.5)
